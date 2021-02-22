@@ -90,7 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Bin\Data\Fonts;..\Common\Controlls;..\Common;..\Common\Shader;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Bin\Data\Fonts;Common\Controlls;Common;Common\Shader;..\FirecrackerOGL;</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\Bin\Data\Fonts;..\Common\Controlls;..\Common;..\Common\Shader;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Bin\Data\Fonts;Common\Controlls;Common;Common\Shader;..\FirecrackerOGL;</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:strictStrings- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -151,10 +151,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Common\Controlls\OGLControl.h" />
-    <ClInclude Include="..\Common\Image.h" />
-    <ClInclude Include="..\Common\Textures.h" />
-    <ClInclude Include="..\Common\Utils.h" />
+    <ClInclude Include="Common\Controlls\OGLControl.h" />
+    <ClInclude Include="Common\FontImage.h" />
+    <ClInclude Include="Common\GLFonts.h" />
+    <ClInclude Include="Common\Image.h" />
+    <ClInclude Include="Common\Math3D.h" />
+    <ClInclude Include="Common\Matrix.h" />
+    <ClInclude Include="Common\Observable.h" />
+    <ClInclude Include="Common\OGLBuffers.h" />
+    <ClInclude Include="Common\Patterns.h" />
+    <ClInclude Include="Common\Textures.h" />
     <ClInclude Include="FirecrackerOGL.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
@@ -162,10 +168,13 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Common\Controlls\OGLControl.cpp" />
-    <ClCompile Include="..\Common\Image.cpp" />
-    <ClCompile Include="..\Common\Textures.cpp" />
-    <ClCompile Include="..\Common\Utils.cpp" />
+    <ClCompile Include="Common\Controlls\OGLControl.cpp" />
+    <ClCompile Include="Common\FontImage.cpp" />
+    <ClCompile Include="Common\GLFonts.cpp" />
+    <ClCompile Include="Common\Image.cpp" />
+    <ClCompile Include="Common\OGLBuffers.cpp" />
+    <ClCompile Include="Common\Textures.cpp" />
+    <ClCompile Include="Common\timer_0.cpp" />
     <ClCompile Include="FirecrackerOGL.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="stdafx.cpp">

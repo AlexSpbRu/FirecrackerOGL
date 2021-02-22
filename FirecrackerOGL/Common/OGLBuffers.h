@@ -377,75 +377,76 @@ public :
 
 //	inline void SetLineWidth(unsigned int Width) { m_iLineWidth = Width; };
 //	inline void SetPrimitive(unsigned int Primitive) { m_Primitive = Primitive; };
-#ifndef OPENGLES20
-	inline void Bind() {
-		timer_0	tt("Buffer Bind");
-		auto size = Count();
-		if (VertexSize() != 0) {
-			glGenBuffers(1, &m_iVBO);
-			glBindBuffer(GL_ARRAY_BUFFER, m_iVBO);
-			glBufferData(GL_ARRAY_BUFFER, VertexSize() * sizeof(GLfloat), GetVertexData(), GL_STATIC_DRAW);
-			glVertexPointer(VertexDimension, GL_FLOAT, 0, NULL);
-			glEnableClientState(GL_VERTEX_ARRAY);
-		}
 
-		if (TextureSize() != 0) {
-			glEnable(GL_TEXTURE_2D);
-			glGenBuffers(1, &m_iTBO);
-			glBindBuffer(GL_ARRAY_BUFFER, m_iTBO);
-			glBufferData(GL_ARRAY_BUFFER, TextureSize() * sizeof(GLfloat), GetTextureData(), GL_STATIC_DRAW);
-			glTexCoordPointer(TextureDimension, GL_FLOAT, 0, NULL);
-			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		}
-		else glDisable(GL_TEXTURE_2D);
-
-		if (ColorSize() != 0) {
-			glGenBuffers(1, &m_iCBO);
-			glBindBuffer(GL_ARRAY_BUFFER, m_iCBO);
-			glBufferData(GL_ARRAY_BUFFER, ColorSize() * sizeof(GLfloat), GetColorData(), GL_STATIC_DRAW);
-			glColorPointer(ColorDimension, GL_FLOAT, 0, NULL);
-			glEnableClientState(GL_COLOR_ARRAY);
-		}
-		
-	}
-
-	inline void UnBind() {
-		timer_0	tt("Buffer UnBind");
-
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		if (VertexSize() != 0) {
-			glDeleteBuffers(1, &m_iVBO);
-			glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-		}
-		if (TextureSize() != 0) {
-			glDeleteBuffers(1, &m_iTBO);
-			glDisableClientState(GL_VERTEX_ARRAY);
-			glDisable(GL_TEXTURE_2D);
-		}
-		if (ColorSize() != 0) {
-			glDeleteBuffers(1, &m_iCBO);
-			glDisableClientState(GL_COLOR_ARRAY);
-		}
-
-		Clear();
-	}
-	//
-	inline void DrawArray(unsigned int	Primitive) {
-		Bind();
-		glDrawArrays(Primitive, 0, Count());
-		UnBind();
-	}
-	//
-	inline void DrawElements(unsigned int	Primitive) {
-		Bind();
-		glDrawElements(	Primitive,			// режим
-						IndexSize(),		// количество
-						GL_UNSIGNED_INT,	// тип
-						GetIndexData()		// смещение в элементном буфере
-					);
-		UnBind();
-	}
-#endif
+//#ifndef OPENGLES20
+//	inline void Bind() {
+//		timer_0	tt("Buffer Bind");
+//		auto size = Count();
+//		if (VertexSize() != 0) {
+//			glGenBuffers(1, &m_iVBO);
+//			glBindBuffer(GL_ARRAY_BUFFER, m_iVBO);
+//			glBufferData(GL_ARRAY_BUFFER, VertexSize() * sizeof(GLfloat), GetVertexData(), GL_STATIC_DRAW);
+//			glVertexPointer(VertexDimension, GL_FLOAT, 0, NULL);
+//			glEnableClientState(GL_VERTEX_ARRAY);
+//		}
+//
+//		if (TextureSize() != 0) {
+//			glEnable(GL_TEXTURE_2D);
+//			glGenBuffers(1, &m_iTBO);
+//			glBindBuffer(GL_ARRAY_BUFFER, m_iTBO);
+//			glBufferData(GL_ARRAY_BUFFER, TextureSize() * sizeof(GLfloat), GetTextureData(), GL_STATIC_DRAW);
+//			glTexCoordPointer(TextureDimension, GL_FLOAT, 0, NULL);
+//			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+//		}
+//		else glDisable(GL_TEXTURE_2D);
+//
+//		if (ColorSize() != 0) {
+//			glGenBuffers(1, &m_iCBO);
+//			glBindBuffer(GL_ARRAY_BUFFER, m_iCBO);
+//			glBufferData(GL_ARRAY_BUFFER, ColorSize() * sizeof(GLfloat), GetColorData(), GL_STATIC_DRAW);
+//			glColorPointer(ColorDimension, GL_FLOAT, 0, NULL);
+//			glEnableClientState(GL_COLOR_ARRAY);
+//		}
+//		
+//	}
+//
+//	inline void UnBind() {
+//		timer_0	tt("Buffer UnBind");
+//
+//		glBindBuffer(GL_ARRAY_BUFFER, 0);
+//		if (VertexSize() != 0) {
+//			glDeleteBuffers(1, &m_iVBO);
+//			glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+//		}
+//		if (TextureSize() != 0) {
+//			glDeleteBuffers(1, &m_iTBO);
+//			glDisableClientState(GL_VERTEX_ARRAY);
+//			glDisable(GL_TEXTURE_2D);
+//		}
+//		if (ColorSize() != 0) {
+//			glDeleteBuffers(1, &m_iCBO);
+//			glDisableClientState(GL_COLOR_ARRAY);
+//		}
+//
+//		Clear();
+//	}
+//	//
+//	inline void DrawArray(unsigned int	Primitive) {
+//		Bind();
+//		glDrawArrays(Primitive, 0, Count());
+//		UnBind();
+//	}
+//	//
+//	inline void DrawElements(unsigned int	Primitive) {
+//		Bind();
+//		glDrawElements(	Primitive,			// режим
+//						IndexSize(),		// количество
+//						GL_UNSIGNED_INT,	// тип
+//						GetIndexData()		// смещение в элементном буфере
+//					);
+//		UnBind();
+//	}
+//#endif
 	//
 	void DrawBuffer(CGLTexture* Texture, unsigned int	Primitive) noexcept
 	{

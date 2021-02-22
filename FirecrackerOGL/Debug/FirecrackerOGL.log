@@ -1,71 +1,62 @@
-﻿  stdafx.cpp
-  OGLControl.cpp
-d:\alex\projects\firecrackerogl\common\fontimage.h(115): warning C4018: '<': signed/unsigned mismatch
-d:\alex\projects\firecrackerogl\common\controlls\oglcontrol.h(659): warning C4552: '<': result of expression not used
-d:\alex\projects\firecrackerogl\common\controlls\oglcontrol.cpp(407): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
-d:\alex\projects\firecrackerogl\common\controlls\oglcontrol.cpp(466): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+﻿  OGLControl.cpp
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.h(115): warning C4018: '<': signed/unsigned mismatch
+d:\alex\projects\firecrackerogl\firecrackerogl\common\controlls\oglcontrol.h(659): warning C4552: '<': result of expression not used
+d:\alex\projects\firecrackerogl\firecrackerogl\common\controlls\oglcontrol.cpp(407): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\controlls\oglcontrol.cpp(466): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+  FontImage.cpp
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.h(115): warning C4018: '<': signed/unsigned mismatch
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(30): warning C4838: conversion from 'int' to 'GLfloat' requires a narrowing conversion
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(29): warning C4244: 'initializing': conversion from 'int' to 'GLfloat', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(30): warning C4244: 'initializing': conversion from 'int' to 'GLfloat', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(37): error C2039: 'DrawElements': is not a member of 'COGLDrawBuffer<3,4,10000>'
+  d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(534): note: see declaration of 'COGLDrawBuffer<3,4,10000>'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(119): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(120): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(121): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(123): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(124): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(125): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(127): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(128): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(129): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(169): warning C4474: 'sprintf' : too many arguments passed for format string
+  d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(169): note: placeholders and their parameters expect 0 variadic arguments, but 2 were provided
+d:\alex\projects\firecrackerogl\firecrackerogl\common\fontimage.cpp(308): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+  GLFonts.cpp
   Image.cpp
-  Textures.cpp
-  Utils.cpp
-  FirecrackerOGL.cpp
-d:\alex\projects\firecrackerogl\common\fontimage.h(115): warning C4018: '<': signed/unsigned mismatch
-d:\alex\projects\firecrackerogl\common\controlls\oglcontrol.h(659): warning C4552: '<': result of expression not used
-d:\alex\projects\firecrackerogl\firecrackerogl\firecrackerogl.cpp(217): warning C4838: conversion from 'int' to 'BYTE' requires a narrowing conversion
-  Scene.cpp
-d:\alex\projects\firecrackerogl\common\fontimage.h(115): warning C4018: '<': signed/unsigned mismatch
-d:\alex\projects\firecrackerogl\common\controlls\oglcontrol.h(659): warning C4552: '<': result of expression not used
-d:\alex\projects\firecrackerogl\firecrackerogl\scene.cpp(107): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-d:\alex\projects\firecrackerogl\firecrackerogl\scene.cpp(108): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-d:\alex\projects\firecrackerogl\firecrackerogl\scene.cpp(282): warning C4101: 'fragmentShader': unreferenced local variable
-d:\alex\projects\firecrackerogl\firecrackerogl\scene.cpp(281): warning C4101: 'vertexShader': unreferenced local variable
-d:\alex\projects\firecrackerogl\firecrackerogl\scene.cpp(283): warning C4101: 'linked': unreferenced local variable
-d:\alex\projects\firecrackerogl\firecrackerogl\scene.cpp(374): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-d:\alex\projects\firecrackerogl\firecrackerogl\scene.cpp(561): warning C4244: 'argument': conversion from 'GLsizei' to 'float', possible loss of data
-d:\alex\projects\firecrackerogl\firecrackerogl\scene.cpp(697): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-  Generating Code...
-OGLControl.obj : error LNK2019: unresolved external symbol __imp__glBindTexture@8 referenced in function "public: bool __thiscall CGLTexture::Bind(void)" (?Bind@CGLTexture@@QAE_NXZ)
-Image.obj : error LNK2001: unresolved external symbol __imp__glBindTexture@8
-Textures.obj : error LNK2001: unresolved external symbol __imp__glBindTexture@8
-Scene.obj : error LNK2001: unresolved external symbol __imp__glBindTexture@8
-OGLControl.obj : error LNK2019: unresolved external symbol __imp__glDisable@4 referenced in function "public: virtual void __thiscall COGLControl::DrawES(class COGLDrawBuffer<3,4,10000> &,float)" (?DrawES@COGLControl@@UAEXAAV?$COGLDrawBuffer@$02$03$0CHBA@@@M@Z)
-OGLControl.obj : error LNK2019: unresolved external symbol __imp__glDrawArrays@12 referenced in function "public: void __thiscall COGLDrawBuffer<3,4,10000>::DrawBuffer(class CGLTexture *,unsigned int)" (?DrawBuffer@?$COGLDrawBuffer@$02$03$0CHBA@@@QAEXPAVCGLTexture@@I@Z)
-Scene.obj : error LNK2001: unresolved external symbol __imp__glDrawArrays@12
-OGLControl.obj : error LNK2019: unresolved external symbol __imp__glDrawElements@16 referenced in function "public: void __thiscall COGLDrawBuffer<3,4,10000>::DrawBuffer(class CGLTexture *,unsigned int)" (?DrawBuffer@?$COGLDrawBuffer@$02$03$0CHBA@@@QAEXPAVCGLTexture@@I@Z)
-Scene.obj : error LNK2001: unresolved external symbol __imp__glDrawElements@16
-OGLControl.obj : error LNK2019: unresolved external symbol __imp__glEnable@4 referenced in function "public: virtual void __thiscall COGLControl::DrawES(class COGLDrawBuffer<3,4,10000> &,float)" (?DrawES@COGLControl@@UAEXAAV?$COGLDrawBuffer@$02$03$0CHBA@@@M@Z)
-Scene.obj : error LNK2001: unresolved external symbol __imp__glEnable@4
-OGLControl.obj : error LNK2019: unresolved external symbol __imp__glGetError@0 referenced in function "public: bool __thiscall CGLTexture::Bind(void)" (?Bind@CGLTexture@@QAE_NXZ)
-Image.obj : error LNK2001: unresolved external symbol __imp__glGetError@0
-Textures.obj : error LNK2001: unresolved external symbol __imp__glGetError@0
-Scene.obj : error LNK2001: unresolved external symbol __imp__glGetError@0
-OGLControl.obj : error LNK2019: unresolved external symbol __imp__glTexParameteri@12 referenced in function "public: void __thiscall COGLDrawBuffer<3,4,10000>::DrawBuffer(class CGLTexture *,unsigned int)" (?DrawBuffer@?$COGLDrawBuffer@$02$03$0CHBA@@@QAEXPAVCGLTexture@@I@Z)
-Image.obj : error LNK2001: unresolved external symbol __imp__glTexParameteri@12
-Textures.obj : error LNK2001: unresolved external symbol __imp__glTexParameteri@12
-Scene.obj : error LNK2001: unresolved external symbol __imp__glTexParameteri@12
-OGLControl.obj : error LNK2019: unresolved external symbol "public: unsigned int __thiscall Shader::getShader(void)" (?getShader@Shader@@QAEIXZ) referenced in function "public: void __thiscall COGLDrawBuffer<3,4,10000>::DrawBuffer(class CGLTexture *,unsigned int)" (?DrawBuffer@?$COGLDrawBuffer@$02$03$0CHBA@@@QAEXPAVCGLTexture@@I@Z)
-Scene.obj : error LNK2001: unresolved external symbol "public: unsigned int __thiscall Shader::getShader(void)" (?getShader@Shader@@QAEIXZ)
-OGLControl.obj : error LNK2019: unresolved external symbol "public: __thiscall CFontImage::~CFontImage(void)" (??1CFontImage@@QAE@XZ) referenced in function "public: void * __thiscall CFontImage::`scalar deleting destructor'(unsigned int)" (??_GCFontImage@@QAEPAXI@Z)
-Scene.obj : error LNK2001: unresolved external symbol "public: __thiscall CFontImage::~CFontImage(void)" (??1CFontImage@@QAE@XZ)
-OGLControl.obj : error LNK2019: unresolved external symbol "public: void __thiscall CFontImage::GetTextSize(class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> > const &,float &,float &)" (?GetTextSize@CFontImage@@QAEXABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@AAM1@Z) referenced in function "private: void __thiscall COGLStaticText::CalculateControlSize(void)" (?CalculateControlSize@COGLStaticText@@AAEXXZ)
-OGLControl.obj : error LNK2019: unresolved external symbol "public: void __thiscall CFontImage::TextDraw(class std::basic_string<wchar_t,struct std::char_traits<wchar_t>,class std::allocator<wchar_t> > const &,float,float,float,class COGLDrawBuffer<3,4,10000> &)" (?TextDraw@CFontImage@@QAEXABV?$basic_string@_WU?$char_traits@_W@std@@V?$allocator@_W@2@@std@@MMMAAV?$COGLDrawBuffer@$02$03$0CHBA@@@@Z) referenced in function "public: virtual void __thiscall COGLButton::DrawES(class COGLDrawBuffer<3,4,10000> &,float)" (?DrawES@COGLButton@@UAEXAAV?$COGLDrawBuffer@$02$03$0CHBA@@@M@Z)
-OGLControl.obj : error LNK2019: unresolved external symbol "public: void __thiscall CFontImage::SetSize(float,float)" (?SetSize@CFontImage@@QAEXMM@Z) referenced in function "private: void __thiscall COGLStaticText::CalculateControlSize(void)" (?CalculateControlSize@COGLStaticText@@AAEXXZ)
-Image.obj : error LNK2019: unresolved external symbol __imp__glGenTextures@8 referenced in function "bool __cdecl CreateTextureFromFileInMemory(void const *,unsigned int,unsigned int &,int &,int &,unsigned int &,int,int,int)" (?CreateTextureFromFileInMemory@@YA_NPBXIAAIAAH21HHH@Z)
-Textures.obj : error LNK2001: unresolved external symbol __imp__glGenTextures@8
-Image.obj : error LNK2019: unresolved external symbol __imp__glTexImage2D@36 referenced in function "bool __cdecl CreateTextureFromFileInMemory(void const *,unsigned int,unsigned int &,int &,int &,unsigned int &,int,int,int)" (?CreateTextureFromFileInMemory@@YA_NPBXIAAIAAH21HHH@Z)
-Textures.obj : error LNK2001: unresolved external symbol __imp__glTexImage2D@36
-Image.obj : error LNK2019: unresolved external symbol _gluBuild2DMipmaps@28 referenced in function "bool __cdecl CreateTextureFromFileInMemory(void const *,unsigned int,unsigned int &,int &,int &,unsigned int &,int,int,int)" (?CreateTextureFromFileInMemory@@YA_NPBXIAAIAAH21HHH@Z)
-Textures.obj : error LNK2001: unresolved external symbol _gluBuild2DMipmaps@28
-Utils.obj : error LNK2019: unresolved external symbol __imp__wglGetProcAddress@4 referenced in function "void __cdecl InitAPI(void)" (?InitAPI@@YAXXZ)
-FirecrackerOGL.obj : error LNK2019: unresolved external symbol __imp__wglCreateContext@4 referenced in function "int __cdecl CreateGLWindow(char *,int,int,int,bool)" (?CreateGLWindow@@YAHPADHHH_N@Z)
-FirecrackerOGL.obj : error LNK2019: unresolved external symbol __imp__wglDeleteContext@4 referenced in function "void __cdecl KillGLWindow(void)" (?KillGLWindow@@YAXXZ)
-FirecrackerOGL.obj : error LNK2019: unresolved external symbol __imp__wglMakeCurrent@8 referenced in function "int __cdecl CreateGLWindow(char *,int,int,int,bool)" (?CreateGLWindow@@YAHPADHHH_N@Z)
-Scene.obj : error LNK2019: unresolved external symbol __imp__glBlendFunc@8 referenced in function "protected: void __thiscall CScene::InitGLES(void)" (?InitGLES@CScene@@IAEXXZ)
-Scene.obj : error LNK2019: unresolved external symbol __imp__glClear@4 referenced in function "public: bool __thiscall CScene::DrawCSceneES(void)" (?DrawCSceneES@CScene@@QAE_NXZ)
-Scene.obj : error LNK2019: unresolved external symbol __imp__glClearColor@16 referenced in function "protected: void __thiscall CScene::InitGLES(void)" (?InitGLES@CScene@@IAEXXZ)
-Scene.obj : error LNK2019: unresolved external symbol __imp__glGetIntegerv@8 referenced in function "public: __thiscall CScene::CScene(int,int)" (??0CScene@@QAE@HH@Z)
-Scene.obj : error LNK2019: unresolved external symbol __imp__glViewport@16 referenced in function "public: void __thiscall CScene::ResizeCScene(int,int)" (?ResizeCScene@CScene@@QAEXHH@Z)
-Scene.obj : error LNK2019: unresolved external symbol __imp__PlaySoundA@12 referenced in function "protected: void __thiscall CPlaySound::play_sound(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,enum CPlaySound::EPlayType)" (?play_sound@CPlaySound@@IAEXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4EPlayType@1@@Z)
-Scene.obj : error LNK2019: unresolved external symbol "public: virtual __thiscall Shader::~Shader(void)" (??1Shader@@UAE@XZ) referenced in function "public: virtual void * __thiscall Shader::`scalar deleting destructor'(unsigned int)" (??_GShader@@UAEPAXI@Z)
-Scene.obj : error LNK2019: unresolved external symbol "public: unsigned char __thiscall Shader::create_program(char const *,char const *)" (?create_program@Shader@@QAEEPBD0@Z) referenced in function "protected: void __thiscall CScene::InitGLES(void)" (?InitGLES@CScene@@IAEXXZ)
-Scene.obj : error LNK2019: unresolved external symbol "public: void __thiscall CFontImageManager::InitFonts(struct SFontSerial const *,int)" (?InitFonts@CFontImageManager@@QAEXPBUSFontSerial@@H@Z) referenced in function "public: __thiscall CScene::CScene(int,int)" (??0CScene@@QAE@HH@Z)
-D:\Alex\Projects\FirecrackerOGL\Debug\FirecrackerOGL.exe : fatal error LNK1120: 28 unresolved externals
+  OGLBuffers.cpp
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(98): error C3646: 'm_ModelMatrix': unknown override specifier
+  d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(532): note: see reference to class template instantiation 'COGLDrawBuffer<VertexDim,ColorDim,BuffSize>' being compiled
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(98): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(99): error C2143: syntax error: missing ';' before '*'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(99): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(99): error C2238: unexpected token(s) preceding ';'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(107): error C2143: syntax error: missing ';' before '*'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(107): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(107): error C2238: unexpected token(s) preceding ';'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(122): error C2061: syntax error: identifier 'Shader'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(135): error C2061: syntax error: identifier 'SOGLMatrix'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(185): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(185): error C2143: syntax error: missing ',' before '&'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(194): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(194): error C2143: syntax error: missing ',' before '&&'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(195): error C2535: 'void COGLDrawBuffer<VertexDim,ColorDim,BuffSize>::AffineTransformation2D(const int) noexcept': member function already defined or declared
+  d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(185): note: see declaration of 'COGLDrawBuffer<VertexDim,ColorDim,BuffSize>::AffineTransformation2D'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(202): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(202): error C2143: syntax error: missing ',' before '&&'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(206): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(206): error C2143: syntax error: missing ',' before '&&'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(211): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(211): error C2143: syntax error: missing ',' before '&'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(217): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(217): error C2143: syntax error: missing ',' before '&'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(229): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(229): error C2143: syntax error: missing ',' before '&'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(302): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(302): error C2143: syntax error: missing ',' before '&'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(320): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(320): error C2143: syntax error: missing ',' before '&'
+d:\alex\projects\firecrackerogl\firecrackerogl\common\oglbuffers.h(532): fatal error C1903: unable to recover from previous error(s); stopping compilation
+  INTERNAL COMPILER ERROR in 'C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x86\CL.exe'
+      Please choose the Technical Support command on the Visual C++
+      Help menu, or open the Technical Support help file for more information

@@ -3,12 +3,12 @@
 
 #include "Math3D.h"
 #include "Shader.h"
+
+#include "utils.h"
 #include "OGLBuffers.h"
 #include "Textures.h"
 
 #include "FontImage.h"
-
-#include "utils.h"
 
 
 CFontImage::CFontImage()
@@ -347,96 +347,96 @@ void	CFontImage::TextDraw( const std::wstring& Text, GLfloat X, GLfloat Y, GLflo
 	} );
 }
 
-#ifndef OPENGLES20
-
-void	CFontImageManager::InitGL() noexcept
-{
-	glShadeModel(GL_SMOOTH);								// Enable Smooth Shading
-	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);					// Black Background
-	glClearDepth(1.0f);										// Depth Buffer Setup
-	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);					// Set Line Antialiasing
-	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
-	glEnable(GL_BLEND);										// Enable Blending
-															//glBlendFunc(GL_ONE, GL_ONE);
-															//glEnable(GL_DEPTH_TEST);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);		// Type Of Blending To Use
-															//
-	//m_LightAmbient = { 0.5f, 0.5f, 0.5f, 1.0f };
-	//m_LightDiffuse = { 0.5f, 0.5f, 0.5f, 1.0f };
-	//m_LightSpecular = { 1.0f, 1.0f, 1.0f, 1.0f };
-	//m_LightPosition = { 300.0f, 300.0f, 500.0f, 1.0f };
-	////COGLDrawWithLight::Init();
-	//glEnable(GL_LIGHTING);
-	//glLightfv(GL_LIGHT1, GL_AMBIENT, m_LightAmbient.data());		// Setup The Ambient Light
-	//glLightfv(GL_LIGHT1, GL_DIFFUSE, m_LightDiffuse.data());		// Setup The Diffuse Light
-	//glLightfv(GL_LIGHT1, GL_POSITION, m_LightPosition.data());		// Position The Light
-	//glLightfv(GL_LIGHT1, GL_SPECULAR, m_LightSpecular.data());
-	//glEnable(GL_LIGHT1);											// Enable Light One
-	//																//
-	//glEnable(GL_COLOR_MATERIAL);
-	//glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT);
-	//glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE);
-	//glColorMaterial(GL_FRONT_AND_BACK, GL_SPECULAR);
-	//
-	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	//
-	//CMatrix::setIdentityM(m_ProjMatrix);
-}
-
-
-bool	CFontImageManager::Init(int Width, int Height) noexcept
-{
-	void InitAPI();
-	InitAPI();
-
-	InitGL();
-
-	return true;
-}
-
-GLvoid	CFontImageManager::ResizeScene(GLsizei width, GLsizei height) noexcept
-{
-	m_iWidth = width;
-	m_iHeight = height;
-	if (height == 0)										// Prevent A Divide By Zero By
-		height = 1;											// Making Height Equal One
-
-	glViewport(0, 0, width, height);						// Reset The Current Viewport
-
-	glMatrixMode(GL_PROJECTION);							// Select The Projection Matrix
-	glLoadIdentity();										// Reset The Projection Matrix
-	glOrtho(0.0f, width, height, 0.0f, -5.0f, 5.0f);		// Create Ortho 640x480 View (0,0 At Top Left)
-															//gluPerspective(45.0f, (GLfloat)width / (GLfloat)height, 10.0f, -2000.0f);
-	glMatrixMode(GL_MODELVIEW);								// Select The Modelview Matrix
-															//glLoadIdentity();										// Reset The Modelview Matrix
-}
-
-bool	CFontImageManager::DrawScene()
-{
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_ALPHA_TEST);
-	//
-	glLoadIdentity();
-	//  рисование сцены
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	if (m_iCurFont >= 0 && m_iCurFont < m_vFonts.size()) {
-		m_vFonts[m_iCurFont].DrawScene(m_DrawBuffer);
-		glLineWidth(2);
-		m_DrawBuffer.DrawArray(GL_LINES);
-	}
-
-	int Width, Height;
-	m_vFonts[m_iCurFont].GetSize(Width, Height);
-	m_vFonts[m_iCurFont].SetSize(15.0f, 25.0f);
-	m_vFonts[m_iCurFont].SetColor(1.0f, 0.0f, 0.0f, 1.0f);
-	m_vFonts[m_iCurFont].TextDraw( std::wstring(L"QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"), 10.0f, Height + 100, 0.0f, m_DrawBuffer );
-	m_DrawBuffer.DrawElements(GL_TRIANGLES);
-	
-	return true;
-}
-
-#endif
+//#ifndef OPENGLES20
+//
+//void	CFontImageManager::InitGL() noexcept
+//{
+//	glShadeModel(GL_SMOOTH);								// Enable Smooth Shading
+//	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);					// Black Background
+//	glClearDepth(1.0f);										// Depth Buffer Setup
+//	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);					// Set Line Antialiasing
+//	glHint(GL_POINT_SMOOTH_HINT, GL_NICEST);
+//	glEnable(GL_BLEND);										// Enable Blending
+//															//glBlendFunc(GL_ONE, GL_ONE);
+//															//glEnable(GL_DEPTH_TEST);
+//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);		// Type Of Blending To Use
+//															//
+//	//m_LightAmbient = { 0.5f, 0.5f, 0.5f, 1.0f };
+//	//m_LightDiffuse = { 0.5f, 0.5f, 0.5f, 1.0f };
+//	//m_LightSpecular = { 1.0f, 1.0f, 1.0f, 1.0f };
+//	//m_LightPosition = { 300.0f, 300.0f, 500.0f, 1.0f };
+//	////COGLDrawWithLight::Init();
+//	//glEnable(GL_LIGHTING);
+//	//glLightfv(GL_LIGHT1, GL_AMBIENT, m_LightAmbient.data());		// Setup The Ambient Light
+//	//glLightfv(GL_LIGHT1, GL_DIFFUSE, m_LightDiffuse.data());		// Setup The Diffuse Light
+//	//glLightfv(GL_LIGHT1, GL_POSITION, m_LightPosition.data());		// Position The Light
+//	//glLightfv(GL_LIGHT1, GL_SPECULAR, m_LightSpecular.data());
+//	//glEnable(GL_LIGHT1);											// Enable Light One
+//	//																//
+//	//glEnable(GL_COLOR_MATERIAL);
+//	//glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT);
+//	//glColorMaterial(GL_FRONT_AND_BACK, GL_DIFFUSE);
+//	//glColorMaterial(GL_FRONT_AND_BACK, GL_SPECULAR);
+//	//
+//	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+//	//
+//	//CMatrix::setIdentityM(m_ProjMatrix);
+//}
+//
+//
+//bool	CFontImageManager::Init(int Width, int Height) noexcept
+//{
+//	void InitAPI();
+//	InitAPI();
+//
+//	InitGL();
+//
+//	return true;
+//}
+//
+//GLvoid	CFontImageManager::ResizeScene(GLsizei width, GLsizei height) noexcept
+//{
+//	m_iWidth = width;
+//	m_iHeight = height;
+//	if (height == 0)										// Prevent A Divide By Zero By
+//		height = 1;											// Making Height Equal One
+//
+//	glViewport(0, 0, width, height);						// Reset The Current Viewport
+//
+//	glMatrixMode(GL_PROJECTION);							// Select The Projection Matrix
+//	glLoadIdentity();										// Reset The Projection Matrix
+//	glOrtho(0.0f, width, height, 0.0f, -5.0f, 5.0f);		// Create Ortho 640x480 View (0,0 At Top Left)
+//															//gluPerspective(45.0f, (GLfloat)width / (GLfloat)height, 10.0f, -2000.0f);
+//	glMatrixMode(GL_MODELVIEW);								// Select The Modelview Matrix
+//															//glLoadIdentity();										// Reset The Modelview Matrix
+//}
+//
+//bool	CFontImageManager::DrawScene()
+//{
+//	glEnable(GL_TEXTURE_2D);
+//	glEnable(GL_ALPHA_TEST);
+//	//
+//	glLoadIdentity();
+//	//  рисование сцены
+//	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//
+//	if (m_iCurFont >= 0 && m_iCurFont < m_vFonts.size()) {
+//		m_vFonts[m_iCurFont].DrawScene(m_DrawBuffer);
+//		glLineWidth(2);
+//		m_DrawBuffer.DrawArray(GL_LINES);
+//	}
+//
+//	int Width, Height;
+//	m_vFonts[m_iCurFont].GetSize(Width, Height);
+//	m_vFonts[m_iCurFont].SetSize(15.0f, 25.0f);
+//	m_vFonts[m_iCurFont].SetColor(1.0f, 0.0f, 0.0f, 1.0f);
+//	m_vFonts[m_iCurFont].TextDraw( std::wstring(L"QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm"), 10.0f, Height + 100, 0.0f, m_DrawBuffer );
+//	m_DrawBuffer.DrawElements(GL_TRIANGLES);
+//	
+//	return true;
+//}
+//
+//#endif
 
 void	CFontImageManager::AddFontSerial(const SFontSerial& Data)
 {

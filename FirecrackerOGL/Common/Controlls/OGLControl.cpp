@@ -149,34 +149,34 @@ void	COGLControl::GetPosition( GLfloat Width, GLfloat Height )  noexcept
 	else m_fvisHeight = m_fvisWidth;
 };
 
-#ifndef OPENGL_SHADER
-void	COGLControl::Draw(CTextVertexColorBuffer& Buffer) noexcept
-{
-	if (m_iTextureType != CTextureManager::EType::None) {
-		glEnable(GL_TEXTURE_2D);
-		CTextureManager::GetInstance().GetTexture(m_iTextureType)->Bind();
-	}
-	else
-		glDisable(GL_TEXTURE_2D);
-
-	auto	Xparent = 0.0f, Yparent = 0.0f, Z = -3.0f;
-	if ( m_pParent != nullptr ) {
-		Xparent = m_pParent->m_LeftTop.x;
-		Yparent = m_pParent->m_LeftTop.y;
-		Z = m_pParent->m_LeftTop.z + 0.1f;
-	}
-
-	VertexArrayType verOut;
-	GetQuadVertecis(Vec3{ m_LeftTop.x + Xparent, m_LeftTop.y + Yparent, Z }, Vec2{ m_RightBottom.x - m_LeftTop.x, m_RightBottom.y - m_LeftTop.y },
-		m_eRottation, verOut);
-	
-	Buffer.AddVertex(verOut, verOut + iVerteAmount * Buffer.VertexDimension);
-	if (m_iTextureType != CTextureManager::EType::None)
-		Buffer.AddTexture( TextureCoords, TextureCoords + iVerteAmount * Buffer.TextureDimension);
-	Buffer.SetColor(m_CurrentColor);
-	Buffer.AddIndex(Indexes, Indexes + Indexes_size);
-}
-#else
+//#ifndef OPENGL_SHADER
+//void	COGLControl::Draw(CTextVertexColorBuffer& Buffer) noexcept
+//{
+//	if (m_iTextureType != CTextureManager::EType::None) {
+//		glEnable(GL_TEXTURE_2D);
+//		CTextureManager::GetInstance().GetTexture(m_iTextureType)->Bind();
+//	}
+//	else
+//		glDisable(GL_TEXTURE_2D);
+//
+//	auto	Xparent = 0.0f, Yparent = 0.0f, Z = -3.0f;
+//	if ( m_pParent != nullptr ) {
+//		Xparent = m_pParent->m_LeftTop.x;
+//		Yparent = m_pParent->m_LeftTop.y;
+//		Z = m_pParent->m_LeftTop.z + 0.1f;
+//	}
+//
+//	VertexArrayType verOut;
+//	GetQuadVertecis(Vec3{ m_LeftTop.x + Xparent, m_LeftTop.y + Yparent, Z }, Vec2{ m_RightBottom.x - m_LeftTop.x, m_RightBottom.y - m_LeftTop.y },
+//		m_eRottation, verOut);
+//	
+//	Buffer.AddVertex(verOut, verOut + iVerteAmount * Buffer.VertexDimension);
+//	if (m_iTextureType != CTextureManager::EType::None)
+//		Buffer.AddTexture( TextureCoords, TextureCoords + iVerteAmount * Buffer.TextureDimension);
+//	Buffer.SetColor(m_CurrentColor);
+//	Buffer.AddIndex(Indexes, Indexes + Indexes_size);
+//}
+//#else
 
 void	COGLControl::DrawES(CTextVertexColorBuffer& Buffer, GLfloat Height) noexcept
 {
@@ -199,7 +199,7 @@ void	COGLControl::DrawES(CTextVertexColorBuffer& Buffer, GLfloat Height) noexcep
 	Buffer.SetColor(m_CurrentColor);
 	Buffer.AddIndex(Indexes, Indexes + Indexes_size);
 }
-#endif
+//#endif
 
 
 GLvoid	COGLControl::OnLMouseDown() noexcept

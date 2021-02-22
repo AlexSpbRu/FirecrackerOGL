@@ -124,11 +124,11 @@ public:
 	virtual void	OnMouseMove() noexcept;
 	virtual void	OnMouseLeave() noexcept;
 	//
-#ifndef OPENGL_SHADER
-	virtual void	Draw(CTextVertexColorBuffer& Buffer) noexcept;
-#else
+//#ifndef OPENGL_SHADER
+//	virtual void	Draw(CTextVertexColorBuffer& Buffer) noexcept;
+//#else
 	virtual void	DrawES(CTextVertexColorBuffer& Buffer, GLfloat Height ) noexcept;
-#endif
+//#endif
 	//
 	virtual void OnResizeWindow(float Width, float Height)   noexcept {
 		GetPosition(Width, Height);
@@ -205,11 +205,11 @@ public:
 	};
 	const std::wstring&	GetText()  noexcept { return m_sText; };
 	//
-#ifndef OPENGL_SHADER
-	void	Draw(CTextVertexColorBuffer& Buffer) noexcept;
-#else
+//#ifndef OPENGL_SHADER
+//	void	Draw(CTextVertexColorBuffer& Buffer) noexcept;
+//#else
 	void	DrawES(CTextVertexColorBuffer& Buffer, GLfloat Height) noexcept;
-#endif
+//#endif
 };
 
 
@@ -232,11 +232,11 @@ public :
 	void	SetText(const std::wstring& Text)   noexcept;
 	const std::wstring&	GetText()   noexcept { return m_sText; };
 	void	GetPosition(GLfloat Width, GLfloat Height)  noexcept;
-#ifndef OPENGL_SHADER
-	void	Draw(CTextVertexColorBuffer& Buffer) noexcept;
-#else
+//#ifndef OPENGL_SHADER
+//	void	Draw(CTextVertexColorBuffer& Buffer) noexcept;
+//#else
 	void	DrawES(CTextVertexColorBuffer& Buffer, GLfloat Height) noexcept;
-#endif
+//#endif
 };
 
 
@@ -668,14 +668,14 @@ public:
 		for (it = m_vControls.begin(); it != m_vControls.end() && Control->GetTexType() < (*it)->GetTexType(); ++it);
 		m_vControls.insert( it, Control); 
 	};
-#ifndef OPENGL_SHADER
-	//  новое рисование через буферы
-	void	DrawControls( CTextVertexColorBuffer& Buffer) noexcept;
-#else
+//#ifndef OPENGL_SHADER
+//	//  новое рисование через буферы
+//	void	DrawControls( CTextVertexColorBuffer& Buffer) noexcept;
+//#else
 	//   Рисование шейдерами
 	void	DrawControlsES( CTextVertexColorBuffer& Buffer ) noexcept;
 	void	SetWindowSize(int Width, int Height) {  m_iWidth = Width;	m_iHeight = Height; }
-#endif
+//#endif
 	//
 	void	onKeyDown(char Key)  noexcept { }
 	void	onKeyUp(char Key)  noexcept { }

@@ -2,6 +2,8 @@
 
 #include "Math3D.h"
 #include "Shader.h"
+
+#include "utils.h"
 #include "OGLBuffers.h"
 
 #include "Textures.h"
@@ -364,45 +366,45 @@ COGLESFont::COGLESFont() : m_Texture(CTextureManager::GetInstance().GetTexture(C
 
 }
 
-#ifndef OPENGL_SHADER
-
-GLvoid COGLESFont :: glPrint(GLfloat X, GLfloat Y, CTextVertexColorBuffer& Bufer, const char *fmt, ...)
-{
-	char		text[512];
-	va_list		ap;
-
-	if (fmt == NULL)
-		return;
-
-	va_start(ap, fmt);
-	vsprintf(text, fmt, ap);
-	va_end(ap);
-	GLfloat  xpos = X, ypos = Y;
-	m_Texture->Bind();
-	for (auto pos = text; *pos != 0; ++pos) {
-		auto chPos = *pos - 32;
-		float cx = float(chPos % 16) / 16.0f;						// X Position Of Current Character
-		float cy = float(chPos / 16) / 16.0f;						// Y Position Of Current Character
-		Bufer.AddTexture(cx, 1.0f - cy - 0.0625f);
-		Bufer.AddVertex(xpos, ypos + m_fSize, 3.0f);
-		Bufer.AddTexture(cx, 1.0f - cy);
-		Bufer.AddVertex(xpos, ypos, 3.0f);
-		Bufer.AddTexture(cx + 0.0625f, 1.0f - cy - 0.0625f);
-		Bufer.AddVertex(xpos + m_fSize, ypos + m_fSize, 3.0f);
-
-		Bufer.AddTexture(cx + 0.0625f, 1.0f - cy);
-		Bufer.AddVertex(xpos + m_fSize, ypos, 3.0f);
-		Bufer.AddTexture(cx + 0.0625f, 1.0f - cy - 0.0625f);
-		Bufer.AddVertex(xpos + m_fSize, ypos + m_fSize, 3.0f);
-		Bufer.AddTexture(cx, 1.0f - cy);
-		Bufer.AddVertex(xpos, ypos, 3.0f);
-		xpos += m_fSize;
-	}
-	Bufer.SetColor(m_Color.r, m_Color.g, m_Color.b, m_Color.a );
-
-}
-
-#else
+//#ifndef OPENGL_SHADER
+//
+//GLvoid COGLESFont :: glPrint(GLfloat X, GLfloat Y, CTextVertexColorBuffer& Bufer, const char *fmt, ...)
+//{
+//	char		text[512];
+//	va_list		ap;
+//
+//	if (fmt == NULL)
+//		return;
+//
+//	va_start(ap, fmt);
+//	vsprintf(text, fmt, ap);
+//	va_end(ap);
+//	GLfloat  xpos = X, ypos = Y;
+//	m_Texture->Bind();
+//	for (auto pos = text; *pos != 0; ++pos) {
+//		auto chPos = *pos - 32;
+//		float cx = float(chPos % 16) / 16.0f;						// X Position Of Current Character
+//		float cy = float(chPos / 16) / 16.0f;						// Y Position Of Current Character
+//		Bufer.AddTexture(cx, 1.0f - cy - 0.0625f);
+//		Bufer.AddVertex(xpos, ypos + m_fSize, 3.0f);
+//		Bufer.AddTexture(cx, 1.0f - cy);
+//		Bufer.AddVertex(xpos, ypos, 3.0f);
+//		Bufer.AddTexture(cx + 0.0625f, 1.0f - cy - 0.0625f);
+//		Bufer.AddVertex(xpos + m_fSize, ypos + m_fSize, 3.0f);
+//
+//		Bufer.AddTexture(cx + 0.0625f, 1.0f - cy);
+//		Bufer.AddVertex(xpos + m_fSize, ypos, 3.0f);
+//		Bufer.AddTexture(cx + 0.0625f, 1.0f - cy - 0.0625f);
+//		Bufer.AddVertex(xpos + m_fSize, ypos + m_fSize, 3.0f);
+//		Bufer.AddTexture(cx, 1.0f - cy);
+//		Bufer.AddVertex(xpos, ypos, 3.0f);
+//		xpos += m_fSize;
+//	}
+//	Bufer.SetColor(m_Color.r, m_Color.g, m_Color.b, m_Color.a );
+//
+//}
+//
+//#else
 GLvoid	COGLESFont::glPrintES(GLfloat X, GLfloat Y, const char *fmt, ...)
 {
 	char		text[512];
@@ -466,4 +468,4 @@ void	COGLESFont::AddToBuffer(CTextVertexColorBuffer& Bufer)
 	m_vColorBuf.clear();
 }
 
-#endif
+//#endif
