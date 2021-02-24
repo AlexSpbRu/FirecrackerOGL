@@ -371,7 +371,7 @@ void	COGLStaticText::DrawES(CTextVertexColorBuffer& Buffer, GLfloat Height) noex
 }
 #endif
 //---------------------------------------------------------------------------------------------------
-//template < RoundProgressBar >
+
 void	CProgressBarDraw< RoundProgressBar > ::DrawPB(CTextVertexColorBuffer& Buffer) noexcept {
 	glDisable(GL_TEXTURE_2D);
 
@@ -389,7 +389,7 @@ void	CProgressBarDraw< RoundProgressBar > ::DrawPB(CTextVertexColorBuffer& Buffe
 
 	auto dAng = M_PIF / 25.0f;
 	auto count = fabs(stopAngle/dAng);
-	auto alpha = max(0.0f, 1.0 - count*0.05f);
+	auto alpha = max(0.0f, 1.0f - count*0.05f);
 	// вариант с индексным массивом
 	unsigned int index = 0, startIndex = Buffer.Count();
 	
@@ -463,7 +463,7 @@ void	COGLControlManager::DrawControlsES(CTextVertexColorBuffer& Buffer) noexcept
 			Buffer.DrawBuffer(CTextureManager::GetInstance().GetTexture(type), GL_TRIANGLES);
 			type = contr->GetTexType();
 		}
-		contr->DrawES(Buffer, m_iHeight);
+		contr->DrawES(Buffer, static_cast<float>(m_iHeight));
 	}
 	Buffer.DrawBuffer(CTextureManager::GetInstance().GetTexture(type), GL_TRIANGLES);
 	//Buffer.DrawElements(GL_TRIANGLES);

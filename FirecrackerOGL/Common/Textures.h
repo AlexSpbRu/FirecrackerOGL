@@ -48,13 +48,6 @@ class CTextureManager
 public:
 	enum class EType : int {
 		None = 0,
-		Player,
-		Enemy,
-		Hourglass,
-		Bomb,
-		Live,
-		Line,
-		Arrow,
 		Font,
 		Pause,
 		Start,

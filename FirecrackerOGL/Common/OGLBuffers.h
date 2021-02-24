@@ -94,18 +94,18 @@ class COGLDrawBuffer {
 	GLuint									m_iVBO = -1;
 	GLuint									m_iTBO = -1; 
 	GLuint									m_iCBO = -1;
-#ifdef OPENGL_SHADER
+
 	SOGLMatrix								m_ModelMatrix;
 	Shader*									m_Shader = nullptr;
 	GLuint									m_iVertShAttr = 0;			//  координата вершины
 	GLuint									m_iTexCoordLoc = 0;			//	текстурная координгата
 	GLuint									m_iColorLoc = 0;			//	цвет вершины
 	GLuint									m_iSamplerLoc = 0;			//	номер текстуры
-	GLuint									m_iProjMatrix = 0;			//	матрица преобразования кординат координгата
-	GLuint									m_iModelMatrix = 0;			//	матрица преобразования кординат координгата
+	GLuint									m_iProjMatrix = 0;			//	матрица преобразования кординат 
+	GLuint									m_iModelMatrix = 0;			//	матрица преобразования кординат 
 	GLuint									m_ibUseTexture = 0;			//  использовать текстуру или нет
 	SOGLMatrix*								m_ProjMatrix = nullptr;
-#endif
+
 public :
 	//
 	const size_t	VertexDimension = VertexDim;
@@ -115,10 +115,11 @@ public :
 	
 	//
 	COGLDrawBuffer() {
-#ifdef OPENGL_SHADER
+
 		glhLoadIdentityf2(&m_ModelMatrix);
-#endif
+
 	};
+
 	void SetShader(Shader*	Shader) {
 		m_Shader = Shader;
 		auto	iprogramm = m_Shader->getShader();

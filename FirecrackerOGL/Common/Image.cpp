@@ -86,8 +86,7 @@ bool LoadImageGL(LPCTSTR pSrcFile, int& W, int& H, GLenum& PicFormat, unsigned c
 
 bool CreateTextureFromFileInMemory(LPCVOID pSrcData, UINT SrcDataSize, GLuint& Texture, int& W, int& H, GLenum& Format, GLint MAGfilter, GLint MINfilter, int VerticallyFlip )
 {
-	/*if(glActiveTexture == nullptr )
-		glActiveTexture = (PFNGLglActiveTexturePROC)wglGetProcAddress("glActiveTexture");*/
+
 	bool r = true;
 	
 	//timer_0 t("****** CreateTextureFromFileInMemory");
@@ -103,8 +102,8 @@ bool CreateTextureFromFileInMemory(LPCVOID pSrcData, UINT SrcDataSize, GLuint& T
 		return false;
 	}
 
-	W = w;// IntToPow2(w);
-	H = h;// IntToPow2(h);
+	W = w;
+	H = h;
 
 	if (component == 4) 
 		Format = GL_RGBA;
@@ -113,7 +112,7 @@ bool CreateTextureFromFileInMemory(LPCVOID pSrcData, UINT SrcDataSize, GLuint& T
 	else if (component == 1) 
 		Format = GL_ALPHA;
 	else
-		__debugbreak();//RM_ASSERT(__FILE__, __LINE__)
+		__debugbreak();
 
 	if (component == 1)
 		for (int i = 0; i < w*h; i++)pBits[i] = 255 - pBits[i];
@@ -124,37 +123,16 @@ bool CreateTextureFromFileInMemory(LPCVOID pSrcData, UINT SrcDataSize, GLuint& T
 			if (p == 0xff000000)
 				p = 0xff040404;
 		}
-//	IO_TRACE("stbi_load_from_memory 1\n");
-	//if( component == 3 )
-	//for (UINT i=0;i!= 3*w*h;)
-	//{
-	//	UCHAR& r=pBits[i++];
-	//	UCHAR& g=pBits[i++];
-	//	UCHAR& b=pBits[i++];
-	//	if(r+g+b==0)r=g=b=1;		
-	//}
+
 	try {
 		glGenTextures(1, &Texture);
-		//glActiveTexture(GL_TEXTURE0);
+		
 		glBindTexture(GL_TEXTURE_2D, Texture);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, MINfilter);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, MAGfilter);
-		//if (W == w && H == h)
-#ifndef OPENGLES20
-		if (MINfilter == GL_NEAREST_MIPMAP_NEAREST || MINfilter == GL_LINEAR_MIPMAP_NEAREST || MINfilter == GL_NEAREST_MIPMAP_LINEAR || MINfilter == GL_LINEAR_MIPMAP_LINEAR)
-			gluBuild2DMipmaps(GL_TEXTURE_2D, Format, w, h, Format, GL_UNSIGNED_BYTE, pBits);
-		else
-#endif
-			glTexImage2D(GL_TEXTURE_2D, 0, Format, w, h, 0, Format, GL_UNSIGNED_BYTE, pBits);
-		//else
-		//{
 
-		//}
-		//{
-		//	glTexImage2D(GL_TEXTURE_2D, 0, format, W, H, 0, format, GL_UNSIGNED_BYTE, 0);
-		//	for (int i = 0; i<h; i++)
-		//		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, i, w, 1, format, GL_UNSIGNED_BYTE, pBits + i*w*component);
-		//}
+		glTexImage2D(GL_TEXTURE_2D, 0, Format, w, h, 0, Format, GL_UNSIGNED_BYTE, pBits);
+		
 //		IO_TRACE("stbi_load_from_memory 2\n");
 		free(pBits);
 

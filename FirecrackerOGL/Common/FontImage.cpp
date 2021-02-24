@@ -20,34 +20,34 @@ CFontImage::~CFontImage()
 {
 }
 
-#ifndef OPENGLES20
-bool	CFontImage::DrawScene( CTextVertexColorBuffer& DrawBuffer )
-{
-	auto im_height = m_Image.Height();
-	auto im_width = m_Image.Width();
-	m_Image.Bind();
-	GLfloat vertex[] = { 0.0f, m_iYoff, -4.0f,		   im_width , m_iYoff, -4.0f,
-		0.0f, im_height + m_iYoff, -4.0f, im_width, im_height + m_iYoff, -4.0f };
-	GLfloat tex[] = { 0.0f, 1.0f, 1.0f, 1.0f,  0.0f, 0.0f, 1.0f, 0.0f };
-	unsigned int index[] = { 2, 1, 0, 2, 3, 1 };
-	DrawBuffer.AddVertex(vertex, vertex + sizeof(vertex) / sizeof(GLfloat));
-	DrawBuffer.AddTexture(tex, tex + sizeof(tex) / sizeof(GLfloat));
-	DrawBuffer.AddIndex(index, index + sizeof(index) / sizeof(unsigned int));
-	DrawBuffer.SetColor(SOGLColor{ 1.0f, 1.0f, 1.0f, 0.5f });
-	DrawBuffer.DrawElements(GL_TRIANGLES);
-	//
-	std::vector<GLfloat> Vertexes;
-	for (auto& gl : m_Glyphs) {
-		gl.GetVertexes(Vertexes, m_iXoff, m_iYoff, -3.0f);
-		DrawBuffer.AddVertex(&Vertexes[0], &Vertexes[0] + Vertexes.size());
-	}
-	DrawBuffer.SetColor(SOGLColor{ 1.0f, 1.0f, 1.0f, 0.5f });
-
-	return true;
-}
-
-
-#endif
+//#ifndef OPENGLES20
+//bool	CFontImage::DrawScene( CTextVertexColorBuffer& DrawBuffer )
+//{
+//	auto im_height = m_Image.Height();
+//	auto im_width = m_Image.Width();
+//	m_Image.Bind();
+//	GLfloat vertex[] = { 0.0f, m_iYoff, -4.0f,		   im_width , m_iYoff, -4.0f,
+//		0.0f, im_height + m_iYoff, -4.0f, im_width, im_height + m_iYoff, -4.0f };
+//	GLfloat tex[] = { 0.0f, 1.0f, 1.0f, 1.0f,  0.0f, 0.0f, 1.0f, 0.0f };
+//	unsigned int index[] = { 2, 1, 0, 2, 3, 1 };
+//	DrawBuffer.AddVertex(vertex, vertex + sizeof(vertex) / sizeof(GLfloat));
+//	DrawBuffer.AddTexture(tex, tex + sizeof(tex) / sizeof(GLfloat));
+//	DrawBuffer.AddIndex(index, index + sizeof(index) / sizeof(unsigned int));
+//	DrawBuffer.SetColor(SOGLColor{ 1.0f, 1.0f, 1.0f, 0.5f });
+//	DrawBuffer.DrawElements(GL_TRIANGLES);
+//	//
+//	std::vector<GLfloat> Vertexes;
+//	for (auto& gl : m_Glyphs) {
+//		gl.GetVertexes(Vertexes, m_iXoff, m_iYoff, -3.0f);
+//		DrawBuffer.AddVertex(&Vertexes[0], &Vertexes[0] + Vertexes.size());
+//	}
+//	DrawBuffer.SetColor(SOGLColor{ 1.0f, 1.0f, 1.0f, 0.5f });
+//
+//	return true;
+//}
+//
+//
+//#endif
 
 bool LoadImageGL(LPCTSTR pSrcFile, int& W, int& H, GLenum& PicFormat, unsigned char** pSrcData, int& SrcDataSize, int VerticallyFlip);
 
@@ -110,9 +110,9 @@ bool	CFontImage::ScanImageForFont(const std::string& ImageFile)
 	}
 	IO_TRACE("Count %d  \n", m_Glyphs.size());
 	//	вычисляем средний размер
-	auto Smin = 0x7fffffff, Smax = 0, Saver = 0;
-	auto Wmin = 0x7fffffff, Wmax = 0, Waver = 0;
-	auto Hmin = 0x7fffffff, Hmax = 0, Haver = 0;
+	auto Smin = FLT_MAX,  Smax = 0.0f, Saver = 0.0f;
+	auto Wmin = FLT_MAX, Wmax = 0.0f, Waver = 0.0f;
+	auto Hmin = FLT_MAX, Hmax = 0.0f, Haver = 0.0f;
 
 	for (auto& glyph : m_Glyphs) {
 		auto s = glyph.m_fHeight*glyph.m_fWidth;
@@ -166,7 +166,7 @@ bool	CFontImage::MakeFontFile()
 			sprintf(buff, "			{ 0, %ff, %ff, %ff, %ff, %ff, %ff },\n", gl.m_fXpos, gl.m_fYpos, gl.m_fWidth, gl.m_fHeight,gl.m_fXoff, gl.m_fYoff);
 			fText += buff;
 		}
-		sprintf(buff, "		}\n	},\n", fontName.c_str(), m_Glyphs.size());
+		sprintf(buff, "		}\n	},\n"/*, fontName.c_str(), m_Glyphs.size()*/);
 		fText += buff;
 		bool FileWrite(int hFile, void* Buffer, unsigned int Size);
 		ret = FileWrite(txtFont, (void *)fText.c_str(), fText.size());

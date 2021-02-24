@@ -19,6 +19,12 @@
     <Filter Include="Common\Controlls">
       <UniqueIdentifier>{02ca20be-e90b-4a41-96ae-ead0e0c31e7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\Shaider">
+      <UniqueIdentifier>{b97a1b43-f361-4e9b-9e97-29077db9c68c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Particles">
+      <UniqueIdentifier>{b2d83bec-676c-444d-92d0-ad647774c010}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -66,6 +72,24 @@
     <ClInclude Include="Common\Textures.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="Common\Utils.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Shader\Shader.h">
+      <Filter>Common\Shaider</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Particles\Particles.h">
+      <Filter>Common\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Particles\ParticleModel.h">
+      <Filter>Common\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Particles\ParticlesManager.h">
+      <Filter>Common\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Particles\DrawParticle.h">
+      <Filter>Common\Particles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -89,14 +113,29 @@
     <ClCompile Include="Common\Image.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="Common\OGLBuffers.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
     <ClCompile Include="Common\Textures.cpp">
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="Common\timer_0.cpp">
       <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Utils.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Shader\Shader.cpp">
+      <Filter>Common\Shaider</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Particles\Particles.cpp">
+      <Filter>Common\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Particles\ParticleModel.cpp">
+      <Filter>Common\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Particles\ParticlesManager.cpp">
+      <Filter>Common\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Particles\DrawParticle.cpp">
+      <Filter>Common\Particles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

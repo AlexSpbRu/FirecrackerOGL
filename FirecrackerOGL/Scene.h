@@ -65,7 +65,6 @@ protected:
 	std::vector<GLfloat>	m_LightSpecular = { 1.0f, 1.0f,  1.0f, 1.0f };
 	std::vector<GLfloat>	m_LightPosition = { 500.0f, 500.0f, 2000.0f, 1.0f };
 	//
-	CGLTexture		m_Background;
 	size_t			m_iCountBack = 28;
 	std::vector< char >	m_vUsedBack;
 	size_t			GetNewBackgroundNum();
@@ -134,7 +133,7 @@ protected:
 	//COGLStaticText			m_StageContr;
 	//COGLStaticText			m_LeveContrl;
 	////
-	//COGLPanel				m_ControlPanel;
+	COGLPanel				m_ControlPanel;
 	//COGLStaticText			m_PanelText;				// элементы управления на панели
 	//COGLButton				m_PanelButton;
 	////
@@ -144,7 +143,7 @@ protected:
 
 	void		InitGLES() noexcept;
 		
-	void		FindSuitableBackground();
+	//void		FindSuitableBackground();
 	void		ViewPanel(bool Visible);
 public:
 	CScene( int Width, int Height );
@@ -164,7 +163,6 @@ public:
 
 	void		ProcessKeyboard() noexcept;
 	//
-	void		SetControlPosition()  noexcept;			//  задание положения контролов в зависимости от размера окна программы
 	void		ResizeCScene(GLsizei width, GLsizei height) noexcept ;
 	
 	//

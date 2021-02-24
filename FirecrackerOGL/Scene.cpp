@@ -96,10 +96,10 @@ void CPlaySound::stopPlay(int Id) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-CScene::CScene(int Width, int Height)/* : m_btnPause(CTextureManager::EType::Pause, CTextureManager::EType::Start),
+CScene::CScene(int Width, int Height) : m_ControlPanel(CTextureManager::EType::Panel)/*m_btnPause(CTextureManager::EType::Pause, CTextureManager::EType::Start),
 							m_ControlSpeed( CTextureManager::EType::Speed,  CTextureManager::EType::Speed), 
 							m_PanelButton(CTextureManager::EType::PanelBtn, CTextureManager::EType::PanelBtn),
-							m_ControlPanel(CTextureManager::EType::Panel),
+							,
 							m_ScoreControl(CTextureManager::EType::Digits), m_StageControl(CTextureManager::EType::Digits), m_LevelControl(CTextureManager::EType::Digits),
 							m_StartPanel(CTextureManager::EType::StartPanel), m_StartButton(CTextureManager::EType::PanelBtn, CTextureManager::EType::PanelBtn),
 							m_GamePanel(CTextureManager::EType::None )*/
@@ -127,7 +127,7 @@ CScene::CScene(int Width, int Height)/* : m_btnPause(CTextureManager::EType::Pau
 	WIN32_FIND_DATA	FindFileData;
 	//		поиск и чтение всех каталогов
 	HANDLE	hFind;
-	std::string		PATH = m_AppPath + "data\\game\\Girls\\";//"data\\game\\Animals\\"
+	std::string		PATH = m_AppPath + "data\\Backgrounds\\";
 	std::string		file = PATH + "*.*";
 
 	//CGLTexture		Background;
@@ -156,22 +156,25 @@ CScene::CScene(int Width, int Height)/* : m_btnPause(CTextureManager::EType::Pau
 	//
 	CFontImageManager::GetInstance().InitFonts(fonts, FontsCount);
 	//
-		
-	//m_GamePanel.SetAlign(EHorAlign::Full, EVertAlign::Full);
-	//m_GamePanel.SetPosition(Vec3{ 0.0f, 0.0f, -2.0f },  1.0f, 1.0f, ERotation::R0);
-	//
-	//m_ControlSpeed.SetPosition(Vec3{ 0.01f+m_fControlHeightConst, 0.01f, -2.0f}, m_fControlHeightConst,  ERotation::R0);
-	//m_ControlSpeed.SetAlign(EHorAlign::RightBind, EVertAlign::No);
-	//m_ControlSpeed.SetColor(m_SpeedColor[m_iSpeed], m_SpeedColor[m_iSpeed]);
-	//m_GamePanel.AddControl(&m_ControlSpeed);
-	//
-	//m_btnPause.SetAlign(EHorAlign::RightBind, EVertAlign::No);
-	//m_btnPause.SetPosition(Vec3{ 0.02f + 2.0f*m_fControlHeightConst, 0.01f, -2.0f}, m_fControlHeightConst,  ERotation::R0);
-	//m_btnPause.SetColor({ 1.0f, 1.0f, 1.0f, 1.0f });
-	//m_btnPause.SetFixed(true);
-	//m_GamePanel.AddControl(&m_btnPause);
+	m_ControlPanel.SetColor({ 1.0f, 1.0f, 1.0f, 0.5f }, { 1.0f, 1.0f, 1.0f, 0.5f });
 
-	
+	/*m_PanelText.SetFont(0);
+	m_PanelText.SetText(L"Pause");
+	m_PanelText.SetAlign(EHorAlign::Center, EVertAlign::No);
+	m_PanelText.SetPosition(Vec3{ 0.0f, 0.25f, -2.0f }, 0.6f*m_fControlHeightConst, m_fControlHeightConst);
+	m_ControlPanel.AddControl(&m_PanelText);
+
+	m_PanelButton.SetFont(0);
+	m_PanelButton.SetText(L"Continue");
+	m_PanelButton.SetAlign(EHorAlign::Center, EVertAlign::No);
+	m_PanelButton.SetColor({ 1.0f, 1.0f, 1.0f, 0.5f }, { 0.5f, 0.5f, 0.5f, 0.5f });
+	m_PanelButton.SetPosition(Vec3{ 0.0f, 0.35f, -2.0f }, 0.5f, m_fControlHeightConst, ERotation::R0);
+
+	m_ControlPanel.AddControl(&m_PanelButton);*/
+	m_ControlPanel.SetVisible(true);
+	m_ControlPanel.SetPosition(Vec3{ 0.0f, 0.0f, -2.0f }, 0.75f, 0.15f, ERotation::R0);
+	m_ControlPanel.SetAlign(EHorAlign::Center, EVertAlign::Down);
+		
 	GLint maxTexture;
 	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &maxTexture);
 	CEnumeratorTimer<timer_0>::PrintTimeStart();
@@ -310,19 +313,6 @@ void	CScene::InitGLES() noexcept
 }
 #endif
 
-void	CScene::FindSuitableBackground()
-{
-	while (true) {
-		size_t num = GetNewBackgroundNum();
-		if (!m_Background.CreateTexture(m_BackNames[num], GL_LINEAR, GL_LINEAR, 1))
-			continue;
-		auto backWdt = m_Background.Width();
-		auto backHgt = m_Background.Height();
-		if ((m_fMaxWidth / m_fMaxHeight >= 1.0f && backWdt / backHgt >= 1.0f) ||
-			(m_fMaxWidth / m_fMaxHeight < 1.0f && backWdt / backHgt < 1.0f))
-			break;
-	}
-}
 
 void	CScene::ViewPanel(bool Visible)
 {
@@ -337,7 +327,7 @@ bool	CScene::Init(int Width, int Height) noexcept
 	InitAPI();
 
 	//
-	FindSuitableBackground();
+	//FindSuitableBackground();
 
 
 	//
@@ -393,10 +383,10 @@ bool	CScene::DrawCSceneES()  noexcept
 		m_DrawBuffer.SetColor(SOGLColor{ 1.0f, 1.0f, 1.0f, 0.5f });
 		m_DrawBuffer.DrawBuffer(CTextureManager::GetInstance().GetTexture(CTextureManager::EType::Background), GL_TRIANGLES);
 
-		/*if ()*/ {
-			COGLControlManager::GetInstance().DrawControlsES(m_DrawBuffer);
-			return true;
-		}
+		//if ( false) {
+		COGLControlManager::GetInstance().DrawControlsES(m_DrawBuffer);
+		//	return true;
+		//}
 
 		/*GLfloat		fSellHeight = m_SellHeight, fSellWidth = m_SellWidth;
 		GLfloat		fMaxWidth = m_fMaxWidth, fMaxHeight = m_fMaxHeight;*/
@@ -405,6 +395,8 @@ bool	CScene::DrawCSceneES()  noexcept
 		m_bFilled = true;										// Set Filled To True Before Testing
 
 		m_DrawBuffer.LoadIdentity();
+
+
 		//{
 		//timer_0	tt("Draw Background");
 		//for (size_t ix = 0; ix < m_iHorSize; ix++) {	// Loop From Left To Right
@@ -517,32 +509,6 @@ GLvoid	CScene::ProcessKeyboard() noexcept
 
 }
 
-void	CScene::SetControlPosition()  noexcept
-{
-	//m_GamePanel.SetPosition(Vec3{ 0.0f, 0.0f, -2.0f }, Vec3{ 0.0f, 0.0f, -2.0f }, ERotation::R0);
-
-	//m_ControlSpeed.SetPosition(Vec3{ Xdist_from(0.01f, EHorAlign::Right) - m_fControlHeight, sizeY(0.01f), -2.0f }, 
-	//	Vec3{ Xdist_from(0.01f, EHorAlign::Right), sizeY(0.01f)+ m_fControlHeight , -2.0f }, ERotation::R0);
-	//m_btnPause.SetPosition(Vec3{ Xdist_from(0.02f, EHorAlign::Right) - 2.0f*m_fControlHeight, sizeY(0.01f), -2.0f }, 
-	//	Vec3{ Xdist_from(0.02f, EHorAlign::Right) - m_fControlHeight, sizeY(0.01f) + m_fControlHeight, -2.0f }, ERotation::R0);
-
-	//m_GameNameContr.SetPosition(Vec3{ 180.0f, 54.0f, 0.0f }, 0.7f*m_fMediumFont, m_fMediumFont);
-	//m_ScoreContr.SetPosition(Vec3{ 700.0f, 53.0f, 0.0f }, 0.7f*m_fSmallFont, m_fSmallFont);
-	//m_StageContr.SetPosition(Vec3{ 20.0f, 70.0f, 0.0f }, 0.7f*m_fSmallFont, m_fSmallFont);
-	//m_LeveContrl.SetPosition(Vec3{ 20.0f, 40.0f, 0.0f }, 0.7f*m_fSmallFont, m_fSmallFont);
-
-	//m_ControlHourglass.SetPosition(Vec3{ 500.0f, 500.0f, -2.0f }, Vec3{ 600.0f, 600.0f, -2.0f }, ERotation::R0);
-	////
-	//m_ControlPanel.SetPosition(Vec3{ 100.0f, 100.0f, -2.0f }, Vec3{ 612.0f, 612.0f, -2.0f }, ERotation::R0);
-
-	//m_PanelText.SetPosition(Vec3{ 120.0f, 300.0f, -2.0f }, 24.0f, 36.0f);
-	//m_PanelButton.SetPosition(Vec3{ 50.0f, 350.0f, -2.0f }, Vec3{ 450.0f, 420.0f, -2.0f }, ERotation::R0);
-	////
-	//m_StartPanel.SetPosition(Vec3{ 0.0f, 0.0f, -2.0f }, Vec3{ m_fMaxWidth, m_fMaxHeight, -2.0f }, ERotation::R90);
-
-	//m_StartButton.SetPosition(Vec3{ 50.0f, 350.0f, -2.0f }, Vec3{ 450.0f, 420.0f, -2.0f }, ERotation::R0);
-}
-
 
 void	CScene::ResizeCScene(GLsizei width, GLsizei height) noexcept
 {
@@ -570,11 +536,11 @@ void	CScene::ResizeCScene(GLsizei width, GLsizei height) noexcept
 	m_fControlHeight = m_fControlHeightConst*sz;
 	m_fGameObjectSize = m_fGameObjectSizeConst*sz;
 	IO_TRACE("SmallFont = %f width = %f  height = %f \n", m_fSmallFont, width, height);
-//	m_ControlPanel.SetPosition( Vec3{ width/2.0f - 256.0f, height / 2.0f - 256.0f, -2.0f }, Vec3{ width / 2.0f + 256.0f, height / 2.0f + 256.0f, -2.0f }, ERotation::R0 );
+	//m_ControlPanel.SetPosition( Vec3{ width/2.0f - 256.0f, height / 2.0f - 256.0f, -2.0f }, Vec3{ width / 2.0f + 256.0f, height / 2.0f + 256.0f, -2.0f }, ERotation::R0 );
 	//
-	FindSuitableBackground();
+	//FindSuitableBackground();
 	//m_StartPanel.SetPosition(Vec3{ 0.0f, 0.0f, -2.0f }, Vec3{ m_fMaxWidth, m_fMaxHeight, -2.0f }, ERotation::R90);
-	SetControlPosition();
+	
 }
 
 

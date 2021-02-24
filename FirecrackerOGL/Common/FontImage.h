@@ -111,7 +111,7 @@ public :
 	void		AddFont(const CFontImage&& Font) { m_vFonts.emplace_back(Font); } ;
 	void		AddFontSerial(const SFontSerial& Data);
 	int			GetFontsCount() { return m_vFonts.size(); };
-	CFontImage&	GetFont(int Num) { 
+	CFontImage&	GetFont(unsigned int Num) { 
 		assert( Num >= 0 && Num < m_vFonts.size());
 		return m_vFonts[Num];
 	};

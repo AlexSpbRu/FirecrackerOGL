@@ -96,6 +96,9 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\bin\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;Winmm.lib;libGLESv2.lib;libEGL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\bin\FirecrackerOGL.exe</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -130,6 +133,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>..\bin\FirecrackerOGL.exe</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -159,8 +163,14 @@
     <ClInclude Include="Common\Matrix.h" />
     <ClInclude Include="Common\Observable.h" />
     <ClInclude Include="Common\OGLBuffers.h" />
+    <ClInclude Include="Common\Particles\DrawParticle.h" />
+    <ClInclude Include="Common\Particles\ParticleModel.h" />
+    <ClInclude Include="Common\Particles\Particles.h" />
+    <ClInclude Include="Common\Particles\ParticlesManager.h" />
     <ClInclude Include="Common\Patterns.h" />
+    <ClInclude Include="Common\Shader\Shader.h" />
     <ClInclude Include="Common\Textures.h" />
+    <ClInclude Include="Common\Utils.h" />
     <ClInclude Include="FirecrackerOGL.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
@@ -172,9 +182,14 @@
     <ClCompile Include="Common\FontImage.cpp" />
     <ClCompile Include="Common\GLFonts.cpp" />
     <ClCompile Include="Common\Image.cpp" />
-    <ClCompile Include="Common\OGLBuffers.cpp" />
+    <ClCompile Include="Common\Particles\DrawParticle.cpp" />
+    <ClCompile Include="Common\Particles\ParticleModel.cpp" />
+    <ClCompile Include="Common\Particles\Particles.cpp" />
+    <ClCompile Include="Common\Particles\ParticlesManager.cpp" />
+    <ClCompile Include="Common\Shader\Shader.cpp" />
     <ClCompile Include="Common\Textures.cpp" />
     <ClCompile Include="Common\timer_0.cpp" />
+    <ClCompile Include="Common\Utils.cpp" />
     <ClCompile Include="FirecrackerOGL.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="stdafx.cpp">

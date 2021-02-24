@@ -1,0 +1,25 @@
+fopen ok D:\Alex\Projects\FirecrackerOGL\bin\data\Fonts\alphabet_free_png.png
+stbi_load_from_memory SrcDataSize=189203 w=1400 h=688 
+t=1 ok
+fopen ok D:\Alex\Projects\FirecrackerOGL\bin\data\Fonts\digits_font.png
+stbi_load_from_memory SrcDataSize=109667 w=800 h=402 
+t=2 ok
+SmallFont = 24.775000 width = 0.000000  height = 0.000000 
+Size changed
+SmallFont = 24.775000 width = 0.000000  height = 0.000000 
+Size changed
+fopen ok D:\Alex\Projects\FirecrackerOGL\bin\Data\Font.bmp
+stbi_load_from_memory SrcDataSize=196662 w=256 h=256 
+t=3 ok
+_open failed D:\Alex\Projects\FirecrackerOGL\bin\Data\Controlls\pause.png error = 2
+_open failed D:\Alex\Projects\FirecrackerOGL\bin\Data\Controlls\start.png error = 2
+_open failed D:\Alex\Projects\FirecrackerOGL\bin\Data\Controlls\speed.png error = 2
+_open failed D:\Alex\Projects\FirecrackerOGL\bin\Data\Controlls\digits1.png error = 2
+fopen ok D:\Alex\Projects\FirecrackerOGL\bin\Data\Controlls\background.jpg
+stbi_load_from_memory SrcDataSize=167394 w=2000 h=1325 
+t=4 ok
+fopen ok D:\Alex\Projects\FirecrackerOGL\bin\Data\Controlls\Panel.png
+stbi_load_from_memory SrcDataSize=25796 w=960 h=246 
+t=5 ok
+_open failed D:\Alex\Projects\FirecrackerOGL\bin\Data\Controlls\StartPanel.png error = 2
+_open failed D:\Alex\Projects\FirecrackerOGL\bin\Data\Controlls\PanelButton.png error = 2

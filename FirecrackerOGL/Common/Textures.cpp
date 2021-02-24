@@ -118,7 +118,7 @@ bool CGLTexture :: CreateTexture(const std::string& FileName, GLint MAGfilter, G
 		glBindTexture(GL_TEXTURE_2D, m_iTexture);
 		m_iTexture = 0;
 	} 
-	return m_bCreated = CreateTextureFromFileGL(FileName.c_str() , m_iTexture, m_iWidth, m_iHeight, m_PicFormat,  MAGfilter,  MINfilter, VerticallyFlip);
+ 	return m_bCreated = CreateTextureFromFileGL(FileName.c_str() , m_iTexture, m_iWidth, m_iHeight, m_PicFormat,  MAGfilter,  MINfilter, VerticallyFlip);
 }
 
 CTextureManager& CTextureManager::GetInstance()
@@ -133,52 +133,31 @@ bool CTextureManager::Init()
 	std::string		AppPath;
 	GetAppDirectory( AppPath);
 
-	std::string  strPath = AppPath + "Data\\Game\\player1.png";
-	if (!m_arrTextures[static_cast<size_t>(EType::Player)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
-		ret = false;
-	strPath = AppPath + "Data\\Game\\enemy1.png";
-	if (!m_arrTextures[static_cast<size_t>(EType::Enemy)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
-		ret = false;
-	strPath = AppPath + "Data\\Game\\star.png";
-	if (!m_arrTextures[static_cast<size_t>(EType::Live)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
-		ret = false;
-	strPath = AppPath + "Data\\Game\\hourglass2.png";
-	if (!m_arrTextures[static_cast<size_t>(EType::Hourglass)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
-		ret = false;
-	strPath = AppPath + "Data\\Game\\line.png";
-	if (!m_arrTextures[static_cast<size_t>(EType::Line)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
-		ret = false;
-	strPath = AppPath + "Data\\Game\\bomb1.png";
-	if (!m_arrTextures[static_cast<size_t>(EType::Bomb)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
-		ret = false;
-	strPath = AppPath + "Data\\Game\\ArrowLeft.png";
-	if (!m_arrTextures[static_cast<size_t>(EType::Arrow)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
-		ret = false;
-	strPath = AppPath + "Data\\Font.bmp";
+	std::string	strPath = AppPath + "Data\\Font.bmp";
 	if (!m_arrTextures[static_cast<size_t>(EType::Font)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 1))
 		ret = false;
-	strPath = AppPath + "Data\\Game\\pause.png";
+	strPath = AppPath + "Data\\Controlls\\pause.png";
 	if (!m_arrTextures[static_cast<size_t>(EType::Pause)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 1))
 		ret = false;
-	strPath = AppPath + "Data\\Game\\start.png";
+	strPath = AppPath + "Data\\Controlls\\start.png";
 	if (!m_arrTextures[static_cast<size_t>(EType::Start)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 1))
 		ret = false;
-	strPath = AppPath + "Data\\Game\\speed.png";
+	strPath = AppPath + "Data\\Controlls\\speed.png";
 	if (!m_arrTextures[static_cast<size_t>(EType::Speed)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
 		ret = false;
-	strPath = AppPath + "Data\\Game\\digits1.png";
+	strPath = AppPath + "Data\\Controlls\\digits1.png";
 	if (!m_arrTextures[static_cast<size_t>(EType::Digits)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 1))
 		ret = false;
-	strPath = AppPath + "Data\\Game\\background.jpg";
+	strPath = AppPath + "Data\\Controlls\\background.jpg";
 	if (!m_arrTextures[static_cast<size_t>(EType::Background)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 1))
 		ret = false;
-	strPath = AppPath + "Data\\Game\\PanelBackground.png";
+	strPath = AppPath + "Data\\Controlls\\Panel.png";
 	if (!m_arrTextures[static_cast<size_t>(EType::Panel)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
 		ret = false;
-	strPath = AppPath + "Data\\Game\\StartPanel.png";
+	strPath = AppPath + "Data\\Controlls\\StartPanel.png";
 	if (!m_arrTextures[static_cast<size_t>(EType::StartPanel)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
 		ret = false; 
-	strPath = AppPath + "Data\\Game\\PanelButton.png";
+	strPath = AppPath + "Data\\Controlls\\PanelButton.png";
 	if (!m_arrTextures[static_cast<size_t>(EType::PanelBtn)].CreateTexture(strPath, GL_LINEAR, GL_LINEAR, 0))
 		ret = false;
 	return ret;

@@ -32,7 +32,7 @@
 
 *.log
 *.tlog
-Debug
+/Debug
 *.idb
 *.pdb
 *.opendb

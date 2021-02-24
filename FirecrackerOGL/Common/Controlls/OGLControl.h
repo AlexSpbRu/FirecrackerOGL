@@ -46,12 +46,9 @@ protected :
 	CTextureManager::EType		m_iTextureType = CTextureManager::EType::None;
 	//
 	COGLControl*				m_pParent = nullptr;
-	//std::vector<COGLControl*>	m_vChilds;
-	//static float	m_fWidthWindow;
-	//static float	m_fHeightWindow;
+	
 public:
-	//static void		SetWindowSize(float	Width, float Height) { m_fWidthWindow = Width; 	m_fHeightWindow = Height; };
-
+	
 	COGLControl() noexcept;
 	COGLControl(CTextureManager::EType  Type) noexcept;
 	virtual ~COGLControl() noexcept;
@@ -124,11 +121,9 @@ public:
 	virtual void	OnMouseMove() noexcept;
 	virtual void	OnMouseLeave() noexcept;
 	//
-//#ifndef OPENGL_SHADER
-//	virtual void	Draw(CTextVertexColorBuffer& Buffer) noexcept;
-//#else
+
 	virtual void	DrawES(CTextVertexColorBuffer& Buffer, GLfloat Height ) noexcept;
-//#endif
+
 	//
 	virtual void OnResizeWindow(float Width, float Height)   noexcept {
 		GetPosition(Width, Height);
@@ -656,7 +651,7 @@ protected :
 			else {   //  у обоих контролов есть родители
 				if (pc1 == Contr2) ret = false;
 				else if(pc2 == Contr1 ) ret = true;
-				else Contr1 < Contr2;
+//				else Contr1 < Contr2;
 			}
 			return ret; } );
 	};
