@@ -376,79 +376,8 @@ public :
 	inline const GLfloat*  GetColorData() { return m_vColor.GetData(); };
 	inline const unsigned int*  GetIndexData() { return m_vIndex.GetData(); };
 
-//	inline void SetLineWidth(unsigned int Width) { m_iLineWidth = Width; };
-//	inline void SetPrimitive(unsigned int Primitive) { m_Primitive = Primitive; };
 
-//#ifndef OPENGLES20
-//	inline void Bind() {
-//		timer_0	tt("Buffer Bind");
-//		auto size = Count();
-//		if (VertexSize() != 0) {
-//			glGenBuffers(1, &m_iVBO);
-//			glBindBuffer(GL_ARRAY_BUFFER, m_iVBO);
-//			glBufferData(GL_ARRAY_BUFFER, VertexSize() * sizeof(GLfloat), GetVertexData(), GL_STATIC_DRAW);
-//			glVertexPointer(VertexDimension, GL_FLOAT, 0, NULL);
-//			glEnableClientState(GL_VERTEX_ARRAY);
-//		}
-//
-//		if (TextureSize() != 0) {
-//			glEnable(GL_TEXTURE_2D);
-//			glGenBuffers(1, &m_iTBO);
-//			glBindBuffer(GL_ARRAY_BUFFER, m_iTBO);
-//			glBufferData(GL_ARRAY_BUFFER, TextureSize() * sizeof(GLfloat), GetTextureData(), GL_STATIC_DRAW);
-//			glTexCoordPointer(TextureDimension, GL_FLOAT, 0, NULL);
-//			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-//		}
-//		else glDisable(GL_TEXTURE_2D);
-//
-//		if (ColorSize() != 0) {
-//			glGenBuffers(1, &m_iCBO);
-//			glBindBuffer(GL_ARRAY_BUFFER, m_iCBO);
-//			glBufferData(GL_ARRAY_BUFFER, ColorSize() * sizeof(GLfloat), GetColorData(), GL_STATIC_DRAW);
-//			glColorPointer(ColorDimension, GL_FLOAT, 0, NULL);
-//			glEnableClientState(GL_COLOR_ARRAY);
-//		}
-//		
-//	}
-//
-//	inline void UnBind() {
-//		timer_0	tt("Buffer UnBind");
-//
-//		glBindBuffer(GL_ARRAY_BUFFER, 0);
-//		if (VertexSize() != 0) {
-//			glDeleteBuffers(1, &m_iVBO);
-//			glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-//		}
-//		if (TextureSize() != 0) {
-//			glDeleteBuffers(1, &m_iTBO);
-//			glDisableClientState(GL_VERTEX_ARRAY);
-//			glDisable(GL_TEXTURE_2D);
-//		}
-//		if (ColorSize() != 0) {
-//			glDeleteBuffers(1, &m_iCBO);
-//			glDisableClientState(GL_COLOR_ARRAY);
-//		}
-//
-//		Clear();
-//	}
-//	//
-//	inline void DrawArray(unsigned int	Primitive) {
-//		Bind();
-//		glDrawArrays(Primitive, 0, Count());
-//		UnBind();
-//	}
-//	//
-//	inline void DrawElements(unsigned int	Primitive) {
-//		Bind();
-//		glDrawElements(	Primitive,			// режим
-//						IndexSize(),		// количество
-//						GL_UNSIGNED_INT,	// тип
-//						GetIndexData()		// смещение в элементном буфере
-//					);
-//		UnBind();
-//	}
-//#endif
-	//
+
 	void DrawBuffer(CGLTexture* Texture, unsigned int	Primitive) noexcept
 	{
 		timer_0	tt("Buffer FlushES");
@@ -485,13 +414,13 @@ public :
 		glUniformMatrix4fv(m_iProjMatrix, 1, false, &(*m_ProjMatrix)._11);
 		glUniformMatrix4fv(m_iModelMatrix, 1, false, &m_ModelMatrix._11);
 		// Draw quad with nearest sampling
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR/*GL_NEAREST*/);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR/*GL_NEAREST*/);
-		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, indices);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
 		if (m_vIndex.Size() == 0)
-			glDrawArrays(Primitive/*GL_TRIANGLES*/, 0, Count());
+			glDrawArrays(Primitive, 0, Count());
 		else {
-			glDrawElements(Primitive/*GL_TRIANGLES*/,			// режим
+			glDrawElements(Primitive,			// режим
 				m_vIndex.Size(),					// количество
 				GL_UNSIGNED_INT,					// тип
 				m_vIndex.GetData()					// смещение в элементном буфере

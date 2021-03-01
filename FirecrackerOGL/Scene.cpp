@@ -21,6 +21,11 @@
 
 
 #include "OGLControl.h"
+
+#include "Particles.h" 
+#include "ParticleModel.h" 
+#include "ParticlesManager.h"
+#include "DrawParticle.h"
 #include "Scene.h"
 
 
@@ -187,6 +192,9 @@ CScene::CScene(int Width, int Height) : m_ControlPanel(CTextureManager::EType::P
 	CWindowResizeNotifier::GetInstance().registerObserver(this);
 	//
 	m_bPause = true;
+	// prepare farework
+	m_ParticleManager.SetCountParticles(100);
+	m_ParticleManager.InitPaticles( 0.0f, 0.2f, 0.0f );
 }
 
 CScene :: ~CScene()
@@ -392,8 +400,6 @@ bool	CScene::DrawCSceneES()  noexcept
 		GLfloat		fMaxWidth = m_fMaxWidth, fMaxHeight = m_fMaxHeight;*/
 
 		
-		m_bFilled = true;										// Set Filled To True Before Testing
-
 		m_DrawBuffer.LoadIdentity();
 
 

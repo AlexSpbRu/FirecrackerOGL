@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 struct CMass
 {
 	float		m_fX = 0.0f;
@@ -14,9 +16,61 @@ struct CMass
 class CParticleModel
 {
 public:
-	CParticleModel() {};
-	virtual void InitParticle( CParticle& Particle, float Vx, float Vy, float Vz) = 0;    // задается начальное направление движения
-	virtual void CaclParticle( CParticle& Particle, double Dt) = 0;
+	CParticleModel() {}
+	virtual ~CParticleModel() {};
+	virtual void InitParticle( CParticle& Particle, float Vx, float Vy, float Vz, std::function< float(float) > distributionFunction) = 0;    // задается начальное направление движения
+	virtual void CaclParticle( CParticle& Particle, float Dt) = 0;
+};
+
+class CFireworkParticleModel : public CParticleModel {
+
+	float		faiding = 1.0f;				//  faiding coefficient
+	float		blinkAmp = 1.0f;			//  amplitude of blink
+	float		blinkFrec = 1.0f;			//	frequency of blink
+	float		resistance = 1.0f;			//  resistance coefficient
+	//
+	//
+	float		m_Faiding = 1.0f;			//  faiding coefficient
+	float		m_BlinkAmp = 1.0f;			//  amplitude of blink
+	float		m_BlinkFrec = 1.0f;			//	frequency of blink
+	float		m_Resistance = 1.0f;		//  resistance coefficient
+public:
+	CFireworkParticleModel() {}
+	~CFireworkParticleModel() {}
+	void InitParticle(CParticle& Particle, float Vx, float Vy, float Vz, std::function< float(float) > distributionFunction) override;    // задается начальное направление движения
+	void CaclParticle(CParticle& Particle, float Dt) override;
+	//  managing firework
+	float		getFaiding() {
+		return m_Faiding;
+	}
+
+	void		setFaiding(float Faiding) {
+		m_Faiding = Faiding;
+	}
+
+	float		getBlinkAmp() {
+		return m_BlinkAmp;
+	}
+
+	void		setBlinkAmp(float BlinkAmp) {
+		m_BlinkAmp = BlinkAmp;
+	}
+
+	float		getBlinkFrec() {
+		return m_BlinkFrec;
+	}
+
+	void		setBlinkFrec(float BlinkFrec) {
+		m_BlinkFrec = BlinkFrec;
+	}
+
+	float		getResistance() {
+		return m_Resistance;
+	}
+
+	void		setResistance(float Resistance) {
+		m_Resistance = Resistance;
+	}
 };
 
 class CModelGravitation : public CParticleModel
@@ -35,8 +89,8 @@ public:
 		m_vMasses.emplace_back(CMass(X, Y, Z, Mass));
 	}
 
-	void InitParticle(CParticle& Particle, float Vx, float Vy, float Vz) override;
-	void CaclParticle(CParticle& Particle, double Dt) override;
+	void InitParticle(CParticle& Particle, float Vx, float Vy, float Vz, std::function< float(float) > distributionFunction) override;
+	void CaclParticle(CParticle& Particle, float Dt) override;
 };
 
 class CModelStream : public CParticleModel
@@ -62,7 +116,7 @@ class CModelStream : public CParticleModel
 public:
 	CModelStream() {};
 	virtual void AddMass(float X, float Y, float Z, float Mass) {};
-	void InitParticle(CParticle& Particle, float Vx, float Vy, float Vz) override;
-	void CaclParticle(CParticle& Particle, double Dt) override;
+	void InitParticle(CParticle& Particle, float Vx, float Vy, float Vz, std::function< float(float) > distributionFunction) override;
+	void CaclParticle(CParticle& Particle, float Dt) override;
 	
 };

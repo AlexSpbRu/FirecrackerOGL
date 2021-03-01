@@ -5,6 +5,8 @@
 
 #include "Observable.h"
 
+ 
+
 
 //-------------------------------------------------------------------------------------
 
@@ -72,15 +74,7 @@ protected:
 	using steady_time = std::chrono::time_point<std::chrono::steady_clock>;
 	steady_time		m_CurrentTime;
 	//
-	//CGLTexture*		m_Line;
 
-	int				m_iLives = 5;										// Player Lives
-	int				m_iLevel = 1;										// Internal Game Level
-	int				m_iLevel2 = 1;										// Displayed Game Level
-	int				m_iStage = 1;										// Game Stage
-	int				m_iDelay = 0;										// Enemy Delay
-	bool			m_bFilled = true;									// Done Filling In The Grid?
-	//bool			m_bLevelComplete = false;
 	bool			m_bPause = false;
 	//
 	GLfloat			m_fMaxWidth = 1280.0f;		//  размер окна
@@ -115,7 +109,14 @@ protected:
 	GLuint					m_iColorLoc = 0;		//	цвет вершины
 	GLuint					m_iSamplerLoc = 0;		//	номер текстуры
 	GLuint					m_iMatrix = 0;			//	матрица преобразования кординат координгата
+	
+	//  Start speed
+	float		m_fVx = 0.1f;						
+	float		m_fVy = 0.1f;
+	float		m_fVz = 0.0f;
 
+ 	std::vector<CFireworkParticle>  fwp;
+	CParticlesManager< CFireworkParticle, CFireworkParticleModel, DrawPointParticle >	m_ParticleManager;
 	//   элементы управления
 
 	//COGLButton				m_ControlSpeed;
@@ -143,7 +144,6 @@ protected:
 
 	void		InitGLES() noexcept;
 		
-	//void		FindSuitableBackground();
 	void		ViewPanel(bool Visible);
 public:
 	CScene( int Width, int Height );

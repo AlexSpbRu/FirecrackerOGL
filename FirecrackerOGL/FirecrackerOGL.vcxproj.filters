@@ -36,12 +36,6 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FirecrackerOGL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Common\Controlls\OGLControl.h">
       <Filter>Common\Controlls</Filter>
     </ClInclude>
@@ -90,16 +84,16 @@
     <ClInclude Include="Common\Particles\DrawParticle.h">
       <Filter>Common\Particles</Filter>
     </ClInclude>
+    <ClInclude Include="FireworkOGL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FirecrackerOGL.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="Common\Controlls\OGLControl.cpp">
       <Filter>Common\Controlls</Filter>
@@ -136,6 +130,12 @@
     </ClCompile>
     <ClCompile Include="Common\Particles\DrawParticle.cpp">
       <Filter>Common\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="FireworkOGL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
