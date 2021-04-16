@@ -5,8 +5,10 @@
 #include "Shader.h"
 
 #include "utils.h"
-#include "OGLBuffers.h"
+
 #include "Textures.h"
+#include "OGLBuffers.h"
+
 
 #include "FontImage.h"
 
@@ -305,7 +307,7 @@ void	CFontImage::SetSize(GLfloat Width, GLfloat  Height) {
 	m_fYScale = Height / m_iGlyphHeight;
 	if (m_iGlyphWidth == 0) {   //  вычисляем среднюю ширину символа
 		for (SGLGlyph gl : m_Glyphs) {
-			m_iGlyphWidth += gl.m_fWidth;
+			m_iGlyphWidth += static_cast<int>(gl.m_fWidth);
 		}
 		m_iGlyphWidth /= m_Glyphs.size();
 	}

@@ -4,6 +4,8 @@
 
 class	CParticle				//  Structure For Particle
 {
+public:
+
 	bool		active = true;			// Active (Yes/No)
 	//
 	SOGLColor   m_Color;
@@ -25,28 +27,31 @@ public :
 		active = Active;
 	}
 
-	SOGLColor getColor() {
+	virtual SOGLColor getColor() {
 		return m_Color;
 	}
 
-	void setColor(const SOGLColor& Color) {
+	virtual CParticle& setColor(const SOGLColor& Color) {
 		m_Color = Color;
+		return *this;
 	}
 
 	Vec3 getPosition() {
 		return m_Pos;
 	}
 
-	void setPosition(const Vec3& Pos) {
+	CParticle& setPosition(const Vec3& Pos) {
 		m_Pos = Pos;
+		return *this;
 	}
 
 	Vec3 getSpeed() {
 		return m_Speed;
 	}
 
-	void setSpeed(const Vec3& Speed) {
+	CParticle& setSpeed(const Vec3& Speed) {
 		m_Speed =  Speed;
+		return *this;
 	}
 };
 
@@ -61,6 +66,40 @@ public :
 	float		resistance = 0.0f;			//  resistance coefficient
 	CFireworkParticle() = default;
 	virtual ~CFireworkParticle() = default;
+
+	SOGLColor getColor() override {
+		return m_Color;
+	}
+
+	CFireworkParticle& setColor(const SOGLColor& Color)  override {
+		m_Color = Color;
+		return *this;
+	}
+
+	CFireworkParticle&	setFaiding( float Faiding) {
+		faiding = Faiding;
+		return *this;
+	}
+
+	CFireworkParticle&	setBlinkAmp(float BlinkAmp) {
+		blinkAmp = BlinkAmp;
+		return *this;
+	}
+
+	CFireworkParticle&	setBlinkFrec(float  BlinkFrec) {
+		blinkFrec = BlinkFrec;
+		return *this;
+	}
+
+	CFireworkParticle&	setBlinkStart(float  BlinkStart) {
+		blinkStart = BlinkStart;
+		return *this;
+	}
+
+	CFireworkParticle&	setResistance(float  Resistance) {
+		resistance = Resistance;
+		return *this;
+	}
 };
 
 
@@ -70,18 +109,11 @@ public:
 	float		life;					// Particle Life
 	float		fade;					// Fade Speed
 										//
-	float		m_fx = 0.0f;			// X Position
-	float		m_fy = 0.0f;			// Y Position
-	float		m_fz = 0.0f;			// Z Position
-										//
 	float		xg;						// X Gravity
 	float		yg;						// Y Gravity
 	float		zg;						// Z Gravity
-										//									//
+										//	
 	float		m_fMass = 0.0f;
-	float		m_fVx = 0.0f;
-	float		m_fVy = 0.0f;
-	float		m_fVz = 0.0f;
 	//
 	//float		m_fDrawSize = 0.5f;
 	CGravityParticle() {};

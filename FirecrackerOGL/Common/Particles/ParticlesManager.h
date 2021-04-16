@@ -12,13 +12,17 @@ public:
 
 	CParticlesManager() {}
 
+	Model& getModel() {
+		return m_Model;
+	}
+
 	void SetCountParticles(int Count) {
 		m_vParticles.resize(Count);
 	}
 	
-	void	InitPaticles(float Vx, float Vy, float Vz) {
+	void	InitPaticles(Vec3 Pos, Vec3 Speed) {
 		for (auto& pat : m_vParticles) {
-			m_Model.InitParticle(pat, Vx, Vy, Vz, [](float x) { return x; } );
+			m_Model.InitParticle(pat, Pos, Speed);
 		}
 	}
 

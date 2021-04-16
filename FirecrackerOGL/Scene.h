@@ -115,7 +115,7 @@ protected:
 	float		m_fVy = 0.1f;
 	float		m_fVz = 0.0f;
 
- 	std::vector<CFireworkParticle>  fwp;
+ 	//std::vector<CFireworkParticle>  fwp;
 	CParticlesManager< CFireworkParticle, CFireworkParticleModel, DrawPointParticle >	m_ParticleManager;
 	//   элементы управления
 

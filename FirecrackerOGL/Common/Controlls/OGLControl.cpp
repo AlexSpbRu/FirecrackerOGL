@@ -8,12 +8,11 @@
 #include "Math3D.h"
 
 #include "utils.h"
-#include "OGLBuffers.h"
-#include "Textures.h"
 
+#include "Textures.h"
+#include "OGLBuffers.h"
 
 #include "FontImage.h"
-
 
 #include "OGLControl.h"
 

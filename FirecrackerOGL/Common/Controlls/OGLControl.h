@@ -582,7 +582,7 @@ public :
 		std::vector< float>	vertex, tex;
 		std::vector< unsigned int >		index;
 		//
-		for (auto& dr : m_Drums) {
+		for (auto& dr : CNumberDrumControl1::m_Drums) {
 			GetVertexTextureES(dr, vertex, tex, Buffer.Count(), index);
 			Buffer.AddVertex(&vertex[0], &vertex[0] + vertex.size());
 			Buffer.AddTexture(&tex[0], &tex[0] + tex.size());

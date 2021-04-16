@@ -134,27 +134,7 @@ public :
 		m_ibUseTexture = glGetUniformLocation(iprogramm, "b_UseTexture");
 	};
 	void SetProjectMatrix(SOGLMatrix*	ProjMatrix) { m_ProjMatrix = ProjMatrix;  };
-	//
-	//inline size_t  Add( GLfloat	U, GLfloat	V, GLfloat X, GLfloat  Y, GLfloat R, GLfloat G, GLfloat  B, GLfloat A ) {
-	//	auto tSize = m_vTexture.Add(U, V);
-	//	auto vSize = m_vVertex.Add(X, Y);
-	//	assert(tSize == vSize);
-	//	return vSize;
-	//};
-
-	//inline size_t  Add(GLfloat	U, GLfloat	V, GLfloat X, GLfloat  Y, GLfloat  Z) {
-	//	auto tSize = m_vTexture.Add(U, V);
-	//	auto vSize = m_vVertex.Add(X, Y, Z );
-	//	assert(tSize == vSize);
-	//	return vSize;
-	//};
-
-	//inline size_t  Add(GLfloat	U, GLfloat	V, GLfloat X, GLfloat  Y, GLfloat  Z,  GLfloat  W) {
-	//	auto tSize = m_vTexture.Add(U, V);
-	//	auto vSize = m_vVertex.Add(X, Y, Z, W );
-	//	assert(tSize == vSize);
-	//	return vSize;
-	//};
+	
 	//  добавить тексттурные координаты
 	inline size_t  AddTexture(GLfloat	U, GLfloat	V) {
 		timer_0	tt("Buffer Add");
@@ -166,13 +146,7 @@ public :
 		auto cSize = m_vTexture.Add(Begin, End);
 		return cSize;
 	};
-	//template <typename... Float>
-	//inline size_t  AddTexture(Float ... X) {
-	//	timer_0	tt("Buffer Add");
-	//	//assert(false);
-	//	auto vSize = m_vTexture.Add(/*std::forward<Float>*/(X) ...);
-	//	return vSize;
-	//};
+	
 	//  вместо предыдущей, закоментированной функции
 	inline size_t  AddTexture(std::vector<GLfloat>&& Data) {
 		timer_0	tt("Buffer Add");
@@ -186,7 +160,7 @@ public :
 	void	AffineTransformation2D(const Vec3& Offset, GLfloat Angle, const Vec3& RotAxis, const Vec3& Scale) noexcept
 	{
 		glhLoadIdentityf2(&m_ModelMatrix);
-		glhTranslatef2(&m_ModelMatrix, Offset.x, m_fMaxHeight - Offset.y, Offset.z);
+		glhTranslatef2(&m_ModelMatrix, Offset.x,/* m_fMaxHeight - NB!!!???*/Offset.y, Offset.z);
 		glhScalef2(&m_ModelMatrix, Scale.x, Scale.y, Scale.z);
 		glhRotatef2(&m_ModelMatrix, Angle*M_PIF / 180.0f, RotAxis.x, RotAxis.y, RotAxis.z);
 
@@ -256,13 +230,7 @@ public :
 		auto vSize = m_vVertex.Add(X, Y, Z, W);
 		return vSize;
 	};
-	//template <typename... Float>
-	//inline size_t  AddVertex(Float ... X  ) {
-	//	timer_0	tt("Buffer Add");
-	//	//assert(false);
-	//	auto vSize = m_vVertex.Add(/*std::forward<Float>*/(X) ...);
-	//	return vSize;
-	//};
+	
 	//  вместо предыдущей, закоментированной функции
 	inline size_t  AddVertex( std::vector<GLfloat>&& Data) {
 		timer_0	tt("Buffer Add");

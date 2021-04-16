@@ -13,12 +13,12 @@
 #include "Shader.h"
 
 #include "utils.h"
-#include "OGLBuffers.h"
 
 #include "Textures.h"
+#include "OGLBuffers.h"
+
 #include "FontImage.h"
 //#include "Particles.h"
-
 
 #include "OGLControl.h"
 
@@ -109,8 +109,8 @@ CScene::CScene(int Width, int Height) : m_ControlPanel(CTextureManager::EType::P
 							m_StartPanel(CTextureManager::EType::StartPanel), m_StartButton(CTextureManager::EType::PanelBtn, CTextureManager::EType::PanelBtn),
 							m_GamePanel(CTextureManager::EType::None )*/
 {
-	m_fMaxHeight = Height;
-	m_fMaxWidth = Width;
+	m_fMaxHeight = static_cast<float>(Height);
+	m_fMaxWidth = static_cast<float>(Width);
 	//			конкретные размеры элементов
 	m_fSmallFont = m_fSmallFontConst*Height;
 	m_fMediumFont = m_fMediumFontConst*Height;
@@ -194,7 +194,16 @@ CScene::CScene(int Width, int Height) : m_ControlPanel(CTextureManager::EType::P
 	m_bPause = true;
 	// prepare farework
 	m_ParticleManager.SetCountParticles(100);
-	m_ParticleManager.InitPaticles( 0.0f, 0.2f, 0.0f );
+	//std::function<float()> ff = (CNormalDistributionValue<float>(1.0f, 1.0f))();
+	//static_assert(	std::is_same_v<std::function<float()>, decltype(ff) >, "wrong type");
+	
+	//static_assert( , "wrong type");
+	auto  fl = []() { return 0.0f; };
+	float fff();
+	/*static_assert(std::is_function_v<decltype(fl)>, "This isn't function");
+	static_assert( std::is_function_v<decltype(ff)>, "This isn't function");*/
+	m_ParticleManager.getModel().setPhisicalValuesDF( /*&CNormalDistributionValue<float>(1.0f, 1.0f)*/ fff, fl);
+	//m_ParticleManager.InitPaticles( 0.0f, 0.2f, 0.0f );
 }
 
 CScene :: ~CScene()
@@ -289,9 +298,9 @@ void	CScene::InitGLES() noexcept
 		//"   gl_FragColor = mix(v_textureColor, v_texColor, v_textureColor.a);"
 		"}";
 	
-	GLuint vertexShader;
+	/*GLuint vertexShader;
 	GLuint fragmentShader;
-	GLint linked;
+	GLint linked;*/
 	
 	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
 	// Load the vertex/fragment shaders
@@ -522,17 +531,11 @@ void	CScene::ResizeCScene(GLsizei width, GLsizei height) noexcept
 		height = 1;											// Making Height Equal One
 
 	glViewport(0, 0, width, height);						// Reset The Current Viewport
-#ifndef OPENGL_SHADER
-	glMatrixMode(GL_PROJECTION);							// Select The Projection Matrix
-	glLoadIdentity();										// Reset The Projection Matrix
-	glOrtho(0.0f, width, height, 0.0f, -5.0f, 5.0f);		// Create Ortho 640x480 View (0,0 At Top Left)
-	//gluPerspective(45.0f, (GLfloat)width / (GLfloat)height, 10.0f, -2000.0f);
-	glMatrixMode(GL_MODELVIEW);								// Select The Modelview Matrix
-#else
+
 	CMatrix::setIdentityM(m_ProjMatrix);
-	CMatrix::orthoM( m_ProjMatrix, 0.0f, width, 0.0f, height, -5.0f, 5.0f );
+	CMatrix::orthoM( m_ProjMatrix, 0.0f, static_cast<float>(width), 0.0f, static_cast<float>(height), -5.0f, 5.0f );
 	COGLControlManager::GetInstance().SetWindowSize(width, height);
-#endif
+
 	SetMaxSize(width, height);
 	//
 	auto sz = min(width, height);

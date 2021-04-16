@@ -164,6 +164,7 @@
     <ClInclude Include="Common\Matrix.h" />
     <ClInclude Include="Common\Observable.h" />
     <ClInclude Include="Common\OGLBuffers.h" />
+    <ClInclude Include="Common\Particles\CParticlesCreator.h" />
     <ClInclude Include="Common\Particles\DrawParticle.h" />
     <ClInclude Include="Common\Particles\ParticleModel.h" />
     <ClInclude Include="Common\Particles\Particles.h" />
@@ -183,6 +184,10 @@
     <ClCompile Include="Common\FontImage.cpp" />
     <ClCompile Include="Common\GLFonts.cpp" />
     <ClCompile Include="Common\Image.cpp" />
+    <ClCompile Include="Common\Particles\CParticlesCreator.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Common\Particles\DrawParticle.cpp" />
     <ClCompile Include="Common\Particles\ParticleModel.cpp" />
     <ClCompile Include="Common\Particles\Particles.cpp" />
